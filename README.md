@@ -1,6 +1,6 @@
 # hs-aitubots-api
 
-![Build Status](https://img.shields.io/circleci/project/klappvisor/haskell-telegram-api.svg)
+![Build Status](https://img.shields.io/circleci/project/avatar29A/hs-aitubots-api.svg)
 ![Haskell Programming Language](https://img.shields.io/badge/language-Haskell-blue.svg)
 ![BSD3 License](http://img.shields.io/badge/license-BSD3-brightgreen.svg)
 
