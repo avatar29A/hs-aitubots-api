@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          name: Restore Cached Dependencies
+          name: Restore Cached Dependencies.
           keys:
             - hs-aitubots-api-v1-{{ checksum "stack.yaml" }}-{{ checksum "package.yaml" }}
             - hs-aitubots-api-v1-{{ checksum "stack.yaml" }}
