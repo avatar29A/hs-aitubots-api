@@ -6,7 +6,7 @@ High-level bindings to the Aitu Bot API based on mtl style.
 
 ### getMe
 
-```
+```haskell
 {-# LANGUAGE OverloadedStrings #-}
 
 module Main where
