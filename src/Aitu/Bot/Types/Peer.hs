@@ -24,10 +24,10 @@ instance FromJSON PeerType where
 data Peer = Peer {
     peerType :: PeerType
     , peerId :: UUID
-    , userName :: Maybe Text
-    , firstName :: Maybe Text
-    , lastName :: Maybe Text
-    , name :: Maybe Text
+    , peerUserName :: Maybe Text
+    , peerFirstName :: Maybe Text
+    , peerLastName :: Maybe Text
+    , peerName :: Maybe Text
 } deriving (Show)
 
 instance FromJSON Peer where
