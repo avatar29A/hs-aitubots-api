@@ -23,6 +23,8 @@ import qualified Data.ByteString as BS
 import Aitu.Config
 import Aitu.Bot.Types
 
+type Method = BS.ByteString
+
 type AituBotClient a = ReaderT AituBotConfig IO (Either ClientError a)
 
 defaultApiUrl :: Url
@@ -36,10 +38,10 @@ runAituBotClientWithConfig cfg f = runReaderT f cfg
 runAituBotClient :: Token -> Manager -> AituBotClient a -> IO (Either ClientError a)
 runAituBotClient token manager  = runAituBotClientWithConfig (Config {token = token, manager = manager, apiUrl = defaultApiUrl })
 
--- getMeM returns Bot info
+-- getMe returns Bot info
 getMe :: AituBotClient Bot 
 getMe = do
-    response <- invoke "getMe"
+    response <- invoke "GET" "getMe"
     pure (response >>= mkFromJSON)
 
 -- sendMessage to User
@@ -51,16 +53,16 @@ mkFromJSON :: FromJSON a => BC.ByteString -> Either ClientError a
 mkFromJSON = coerceEitherStringToEitherCE . eitherDecode
 
 -- invoke does http request to Aitu Bot Platform and returns raw data or Error.
-invoke :: Url -> AituBotClient BC.ByteString
-invoke method = do 
+invoke :: Url -> Method -> AituBotClient BC.ByteString
+invoke endpoint method = do 
     t <- asks token
     m <- asks manager
     baseUrl <- asks apiUrl
-    let url = baseUrl <> method 
+    let url = baseUrl <> endpoint 
 
     initReq <- liftIO $ parseRequest url
     let request = initReq {
-        method = "GET"
+        method = method
         , requestHeaders = [("x-bot-token", t)]
     }
 

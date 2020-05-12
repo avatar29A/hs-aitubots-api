@@ -1,35 +1,22 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.Message where
+module Aitu.Bot.Types.Updates.Message where
 
 import Data.Aeson
-import qualified Data.Aeson.Types as JSONTypes
 import Data.Text
+
+import qualified Data.Aeson.Types as JSONTypes
 import Data.UUID.Types
 
 import qualified Data.ByteString.Lazy.Char8 as B
 import           Data.Time.Clock                ( UTCTime )
 
 import Aitu.Bot.Types.Peer (Peer)
+import Aitu.Bot.Types.Media (Media)
+import Aitu.Bot.Types.ForwardMetadata (ForwardMetadata)
 
-newtype ForwardMetadata = ForwardMetadata {
-    fmSender :: Peer
-}
-
-instance FromJSON ForwardMetadata where
-    parseJSON (Object v) =
-        ForwardMetadata <$> v .: "sender"
-
-data Media = Media {
-    mediaType :: Text
-    , mediaFileId :: Maybe Text
-}
-
-instance FromJSON Media where
-    parseJSON (Object v) =
-        Media <$> v .: "type"
-              <*> v .: "fileId"
-
+-- Message  represents an update about a new message sent to dialog with a service.
+-- doc: https://btsdigital.github.io/bot-api-contract/message.html 
 data Message = Message {
     messageUpdateId :: Text
     , messageId :: UUID

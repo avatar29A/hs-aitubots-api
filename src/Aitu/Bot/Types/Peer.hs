@@ -19,6 +19,8 @@ instance FromJSON PeerType where
             "BOT" -> BotPeer
             "CHANNEL" -> ChannelPeer
 
+-- Peer represents particular user, service, group dialog or channel.
+-- doc: https://btsdigital.github.io/bot-api-contract/peer.html
 data Peer = Peer {
     peerType :: PeerType
     , peerId :: UUID
@@ -26,7 +28,7 @@ data Peer = Peer {
     , firstName :: Maybe Text
     , lastName :: Maybe Text
     , name :: Maybe Text
-}
+} deriving (Show)
 
 instance FromJSON Peer where
     parseJSON (Object v) =

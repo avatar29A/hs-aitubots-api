@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 0d4186bf71c0ea9d41d91debbb27bfc04aef3a5ad9eb319dd672ddb039b6a6d6
+-- hash: 38d740cd688bb11d1a91e2f3d297ae193e3e15dfc535f1e53e6d018177c44fed
 
 name:           hs-aitubots-api
 version:        0.1.0.0
@@ -29,11 +29,26 @@ library
   exposed-modules:
       Aitu.Bot
       Aitu.Bot.Types
+      Aitu.Bot.Types.Audio
+      Aitu.Bot.Types.Avatar
       Aitu.Bot.Types.Bot
-      Aitu.Bot.Types.Commands
+      Aitu.Bot.Types.Commands.InlineCommand
+      Aitu.Bot.Types.Commands.QuickButtonCommand
+      Aitu.Bot.Types.Commands.ReplyCommand
+      Aitu.Bot.Types.Commands.SendMessageCommand
+      Aitu.Bot.Types.Contact
+      Aitu.Bot.Types.Document
       Aitu.Bot.Types.Errors
-      Aitu.Bot.Types.Message
+      Aitu.Bot.Types.ForwardMetadata
+      Aitu.Bot.Types.Image
+      Aitu.Bot.Types.InputMedia
+      Aitu.Bot.Types.Media
       Aitu.Bot.Types.Peer
+      Aitu.Bot.Types.UIState
+      Aitu.Bot.Types.Updates.Message
+      Aitu.Bot.Types.User
+      Aitu.Bot.Types.Video
+      Aitu.Bot.Types.WebHookInfo
       Aitu.Config
   other-modules:
       Paths_hs_aitubots_api
