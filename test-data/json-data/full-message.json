@@ -1,0 +1,17 @@
+{
+    "updateId": "0",
+    "messageId": "1b963a7b-653f-4d2e-9db4-2ba945893fec",
+    "sentAt": "2013-10-17T09:42:49.007Z",
+    "author": {
+        "type": "USER",
+        "id": "5a5e7cd3-2024-42a4-9895-57a05f32ac84"
+    },
+    "dialog": {
+        "type": "USER",
+        "id": "a8ec27ec-ee0e-407c-a05a-c04791c832bc"
+    },
+    "content": "Привет, друг!",
+    "likeCount": 5,
+    "repostCount": 10,
+    "viewCount": 3
+}
