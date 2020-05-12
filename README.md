@@ -10,7 +10,7 @@ High-level bindings to the Aitu Bot API based on mtl style.
 
 We are support mtl-style way to using Aitu Bot API. Is a based on `AituBotClient` which is just `ReaderT` monad.
 
-:warning: In current time we are support only direct way of interact with API. WebHooks comming soon ... (or see contribute section ;))
+:warning: In current time we are support only direct way of interact with API. WebHooks comming soon ... (or see contribute section).
 
 ### getMe
 
@@ -32,7 +32,7 @@ main = do
 
     manager <- newManager tlsManagerSettings
     response <- runAituBotClient token manager $ do 
-        getMeM
+        getMe
 
     case response of
         Left (code, errMsg) -> BC.putStrLn errMsg

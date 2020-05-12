@@ -10,6 +10,7 @@ data AituBotConfig = Config {
     , apiUrl :: Url
 }
 
+-- Alias Aitu Bot Token
 type Token = BS.ByteString
 type Url = String
 

@@ -5,7 +5,7 @@ module Aitu.Bot (
     , mkConfig
     , runAituBotClient
     , runAituBotClientWithConfig
-    , getMeM
+    , getMe
 ) where
 
 import Control.Monad.Reader
@@ -28,17 +28,17 @@ type AituBotClient a = ReaderT AituBotConfig IO (Either ClientError a)
 defaultApiUrl :: Url
 defaultApiUrl = "https://messapi.btsdapps.net/bot/v1/"
 
--- runAituBotClientWithConfig ...
+-- runAituBotClientWithConfig allows to run API methods with custom Config
 runAituBotClientWithConfig :: AituBotConfig -> AituBotClient a -> IO (Either ClientError a)
 runAituBotClientWithConfig cfg f = runReaderT f cfg
 
--- runAituBotClient take a bot id and Http Manager and
+-- runAituBotClient run API requests on default API Endpoint (if need to changing, please use 'runAituBotClientWithConfig' function)
 runAituBotClient :: Token -> Manager -> AituBotClient a -> IO (Either ClientError a)
 runAituBotClient token manager  = runAituBotClientWithConfig (Config {token = token, manager = manager, apiUrl = defaultApiUrl })
 
 -- getMeM returns Bot info
-getMeM :: AituBotClient Bot 
-getMeM = do
+getMe :: AituBotClient Bot 
+getMe = do
     response <- invoke "getMe"
     pure (response >>= mkFromJSON)
 
@@ -46,12 +46,11 @@ getMeM = do
 sendMessage :: BS.ByteString -> AituBotClient a
 sendMessage = undefined 
 
--- mkFromJSON is a generic function that deserialize json to object. 
--- All errors will be wrap to Either ClientError with a 500 status code.
+-- mkFromJSON is a generic function that deserialize json to Record. 
 mkFromJSON :: FromJSON a => BC.ByteString -> Either ClientError a
 mkFromJSON = coerceEitherStringToEitherCE . eitherDecode
 
--- invoke does http request to Aitu Bot Platform and returns raw data or error
+-- invoke does http request to Aitu Bot Platform and returns raw data or Error.
 invoke :: Url -> AituBotClient BC.ByteString
 invoke method = do 
     t <- asks token
