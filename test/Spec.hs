@@ -1,6 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards   #-}
-{-# LANGUAGE ViewPatterns #-}
 
 module Main (main) where
 
@@ -30,10 +29,11 @@ options = Options
         ( long "integration"
             <> help "Run integration tests" )
     <*> optional ( strOption
-        ( long "botName"
+        ( long "username"
             <> short 'n'
-            <> metavar "BOT_NAME"
-            <> help "Bot name" ))
+            <> short 'u'
+            <> metavar "BOT_USER_NAME"
+            <> help "Bot username" ))
     <*> optional ( strOption
         ( long "chatid"
             <> short 'c'

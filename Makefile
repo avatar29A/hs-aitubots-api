@@ -7,4 +7,4 @@ test:
 	stack test
 
 test-integration:
-	stack test --test-arguments "--integration --token ${TOKEN} --chatid ${CHATID} --botName ${BOTNAME}"
+	stack test --test-arguments "--integration -t ${TOKEN} -c ${CHATID} -n ${BOTNAME}"

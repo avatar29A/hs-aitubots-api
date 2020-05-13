@@ -65,7 +65,7 @@ $ stack test
 Integration Tests
 
 ```
-stack test --test-arguments "--integration -t TOKEN -c CHAT_ID -- HSPEC_ARGS"
+stack test --test-arguments "--integration -t TOKEN -c CHAT_ID -n BOT_USER_NAME -- HSPEC_ARGS"
 ```
 
 or alternative
