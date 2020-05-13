@@ -23,9 +23,6 @@ spec name token chatid = do
         it "responds with correct bot's name" $ do
             response <- runAituBotClient token manager getMe
 
-            liftIO $ print token
-            liftIO $ print response
-
             uniq <- liftIO UUID.nextRandom
             let bot = fromRight Bot {botId = uniq, botName="", botUserName="<undefined>"} response
             AituTypes.botUserName bot `shouldBe` decodeUtf8 name
