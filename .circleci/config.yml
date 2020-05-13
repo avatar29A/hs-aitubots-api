@@ -17,6 +17,9 @@ jobs:
           name: Run tests
           command: stack test
       - run:
+          name: Run integration-tests
+          command: stack test --test-arguments "--integration --token ${AITU_BOT_TOKEN} --chatid ${AITU_BOT_CHAT_ID} --botName ${AITU_BOT_NAME}"
+      - run:
           name: Install executable
           command: stack --no-terminal sdist
       - save_cache:

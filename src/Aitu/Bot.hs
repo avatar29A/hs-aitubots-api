@@ -53,7 +53,7 @@ mkFromJSON :: FromJSON a => BC.ByteString -> Either ClientError a
 mkFromJSON = coerceEitherStringToEitherCE . eitherDecode
 
 -- invoke does http request to Aitu Bot Platform and returns raw data or Error.
-invoke ::  Method -> Url -> AituBotClient BC.ByteString
+invoke :: Method -> Url -> AituBotClient BC.ByteString
 invoke method endpoint = do 
     t <- asks token
     m <- asks manager
