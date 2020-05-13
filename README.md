@@ -62,12 +62,16 @@ Unit Tests
 $ stack test
 ```
 
-or
-
 Integration Tests
 
 ```
 stack test --test-arguments "--integration -t TOKEN -c CHAT_ID -- HSPEC_ARGS"
+```
+
+or alternative
+
+```
+$ AITU_BOT_TOKEN=TOKEN AITU_CHAT_ID=CHAT_ID make test-integration
 ```
 
 where
