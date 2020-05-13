@@ -16,6 +16,7 @@ dependencies:
 - optparse-applicative
 - hspec
 - time
+- uuid
 - uuid-types
 - bytestring
 - http-types
