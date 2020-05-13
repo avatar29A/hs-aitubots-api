@@ -71,6 +71,6 @@ invoke endpoint method = do
     let httpCode = statusCode $ responseStatus response
     let body = responseBody response
 
-    if httpCode /= 200 
-        then pure $ Left (httpCode, body)
-        else pure $ Right body
+    pure $ if httpCode /= 200 
+        then Left (httpCode, body)
+        else Right body

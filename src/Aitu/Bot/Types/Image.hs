@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.Image where
+module Aitu.Bot.Types.Image (Image) where
 
 import Data.Aeson
 import Data.Text

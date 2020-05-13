@@ -1,6 +1,6 @@
 {-# LANGUAGE DeriveGeneric #-}
 
-module Aitu.Bot.Types.WebHookInfo where
+module Aitu.Bot.Types.WebHookInfo (WebHookInfo) where
 
 import Data.Aeson
 import Data.Text

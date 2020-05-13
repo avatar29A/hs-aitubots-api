@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.User where
+module Aitu.Bot.Types.User (User) where
 
 import Data.Aeson
 import Data.Text

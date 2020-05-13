@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.Updates.Message where
+module Aitu.Bot.Types.Updates.Message (Message) where
 
 import Data.Aeson
 import Data.Text

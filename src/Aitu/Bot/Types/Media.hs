@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.Media where
+module Aitu.Bot.Types.Media (Media) where
 
 import Data.Aeson
 import Data.Text

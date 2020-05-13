@@ -1,6 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.Contact where
+module Aitu.Bot.Types.Contact (
+    RegisteredContact, 
+    UnRegisteredContact) where
 
 import Data.Aeson
 import Data.Text

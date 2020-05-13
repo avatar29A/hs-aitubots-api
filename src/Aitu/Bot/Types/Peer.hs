@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.Peer where
+module Aitu.Bot.Types.Peer (Peer) where
 
 import Data.Aeson
 import qualified Data.Aeson.Types as JSONTypes

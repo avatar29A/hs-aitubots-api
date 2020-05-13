@@ -1,6 +1,7 @@
 module Aitu.Bot.Types (module Types) where
 
 -- Types
+import Aitu.Bot.Types.Aliases as Types
 import Aitu.Bot.Types.Audio as Types
 import Aitu.Bot.Types.Avatar as Types
 import Aitu.Bot.Types.Bot as Types

@@ -1,18 +1,18 @@
 {-# LANGUAGE NamedFieldPuns #-}
-module Aitu.Config where
+module Aitu.Config (
+    AituBotConfig (..)
+    , mkConfig) where
 
 import Network.HTTP.Client
 import qualified Data.ByteString as BS
+
+import Aitu.Bot.Types.Aliases (Token, Url)
 
 data AituBotConfig = Config {
     token :: Token
     , manager :: Manager
     , apiUrl :: Url
 }
-
--- Alias Aitu Bot Token
-type Token = BS.ByteString
-type Url = String
 
 mkConfig :: Token -> Manager -> Url -> AituBotConfig
 mkConfig token manager apiUrl = Config {token, manager, apiUrl}

@@ -1,8 +1,14 @@
-module Aitu.Bot.Types.Errors where
+module Aitu.Bot.Types.Errors (
+    ClientError
+    , stringToClientError
+    , coerceToClientError
+    , coerceEitherStringToEitherCE
+    ) where
 
 import qualified Data.ByteString.Lazy.Char8 as BC
 
-type HttpCode = Int
+import Aitu.Bot.Types.Aliases (HttpCode)
+
 type ClientError = (HttpCode, BC.ByteString)
 
 stringToClientError :: String -> ClientError

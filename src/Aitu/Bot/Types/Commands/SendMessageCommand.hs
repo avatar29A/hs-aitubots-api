@@ -1,6 +1,9 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.Commands.SendMessageCommand where
+module Aitu.Bot.Types.Commands.SendMessageCommand (
+    SendMessageCommand
+    , RowInlineCommands) 
+where
 
 import Data.Aeson
 import qualified Data.Aeson.Types as JSONTypes
@@ -19,15 +22,15 @@ type CommandType = String
 type RowInlineCommands = [InlineCommand]
 
 data SendMessageCommand = SendMessageCommand {
-    csmType :: CommandType
-    , csmLocalId :: Maybe Text
-    , csmContent :: Text
-    , csmRecipient :: Peer
-    , csmReplyToMessageId :: Maybe UUID
-    , csmInlineCommands :: Maybe [InlineCommand]
-    , csmInlineCommandRows :: Maybe [RowInlineCommands]
-    , csmUIState :: Maybe UIState
-    , csmMediaList :: Maybe [InputMedia]
+    smType :: CommandType
+    , smLocalId :: Maybe Text
+    , smContent :: Text
+    , smRecipient :: Peer
+    , smReplyToMessageId :: Maybe UUID
+    , smInlineCommands :: Maybe [InlineCommand]
+    , smInlineCommandRows :: Maybe [RowInlineCommands]
+    , smUIState :: Maybe UIState
+    , smMediaList :: Maybe [InputMedia]
 } deriving (Show)
 
 instance FromJSON SendMessageCommand where

@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.Commands.InlineCommand where
+module Aitu.Bot.Types.Commands.InlineCommand (InlineCommand) where
 
 import Data.Aeson
 import Data.Text

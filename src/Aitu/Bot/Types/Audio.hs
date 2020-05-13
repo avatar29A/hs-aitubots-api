@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.Audio where
+module Aitu.Bot.Types.Audio (Audio) where
 
 import Data.Aeson
 import Data.Text

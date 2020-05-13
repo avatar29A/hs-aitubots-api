@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.Video where
+module Aitu.Bot.Types.Video (Video) where
 
 import Data.Aeson
 import Data.Text

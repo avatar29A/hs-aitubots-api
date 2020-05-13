@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.ForwardMetadata where
+module Aitu.Bot.Types.ForwardMetadata (ForwardMetadata) where
 
 import Data.Aeson
 import Data.Text
