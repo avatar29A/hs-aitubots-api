@@ -18,7 +18,7 @@ jobs:
           command: stack test
       - run:
           name: Run integration-tests
-          command: stack test --test-arguments "--integration --t ${AITU_BOT_TOKEN} --c ${AITU_BOT_CHAT_ID} --u ${AITU_BOT_NAME}"
+          command: stack test --test-arguments "--integration -t ${AITU_BOT_TOKEN} -c ${AITU_BOT_CHAT_ID} -u ${AITU_BOT_NAME}"
       - run:
           name: Install executable
           command: stack --no-terminal sdist
