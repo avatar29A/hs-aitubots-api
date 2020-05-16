@@ -12,6 +12,8 @@ We are support mtl-style way to using Aitu Bot API. Is a based on `AituBotClient
 
 :warning: In current time we are support only direct way of interact with API. WebHooks comming soon ... (or see contribute section).
 
+Documentation: https://btsdigital.github.io/bot-api-contract/
+
 ### getMe
 
 ```haskell

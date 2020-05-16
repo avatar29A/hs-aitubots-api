@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.Peer (Peer) where
+module Aitu.Bot.Types.Peer (Peer(..), PeerType(..)) where
 
 import Data.Aeson
 import qualified Data.Aeson.Types as JSONTypes
@@ -9,7 +9,13 @@ import Data.UUID.Types
 
 import qualified Data.ByteString.Lazy.Char8 as BC
 
-data PeerType = UserPeer | GroupPeer | BotPeer | ChannelPeer | UnknownPeer deriving (Show, Enum, Eq)
+data PeerType = UserPeer | GroupPeer | BotPeer | ChannelPeer | UnknownPeer deriving (Enum, Eq)
+
+instance Show PeerType where
+    show UserPeer = "USER"
+    show GroupPeer = "GROUP"
+    show BotPeer = "BOT"
+    show _ = "UNKNOWN"
 
 instance FromJSON PeerType where
     parseJSON (JSONTypes.String s) =
@@ -29,6 +35,16 @@ data Peer = Peer {
     , peerLastName :: Maybe Text
     , peerName :: Maybe Text
 } deriving (Show)
+
+instance ToJSON Peer where
+    toJSON (Peer ty id username firstname lastname name) = object [
+        "type"          .= show ty
+        , "id"          .= id
+        -- , "username"    .= username
+        -- , "firstname"   .= firstname
+        -- , "lastname"    .= lastname
+        -- , "name"        .= name
+        ]
 
 instance FromJSON Peer where
     parseJSON (Object v) =
