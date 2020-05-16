@@ -8,6 +8,8 @@ import Data.Aeson
 import Data.Text
 import GHC.Generics
 
+-- Commands is a wrapper to gethering several command to an one batch
+-- commands : [command1, command2, ... etc]
 data Commands a where
     Commands :: ToJSON a => {commands :: [a]} -> Commands a
 

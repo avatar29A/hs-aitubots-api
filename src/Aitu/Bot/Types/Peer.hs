@@ -1,6 +1,12 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.Peer (Peer(..), PeerType(..)) where
+module Aitu.Bot.Types.Peer (Peer(..)
+, PeerType(..)
+, mkPeerWithDefaults
+, mkUserWithDefaults
+, mkGroupWithDefaults
+, mkBotWithDefaults
+, mkChannelWithDefaults) where
 
 import Data.Aeson
 import qualified Data.Aeson.Types as JSONTypes
@@ -40,10 +46,10 @@ instance ToJSON Peer where
     toJSON (Peer ty id username firstname lastname name) = object [
         "type"          .= show ty
         , "id"          .= id
-        -- , "username"    .= username
-        -- , "firstname"   .= firstname
-        -- , "lastname"    .= lastname
-        -- , "name"        .= name
+        , "username"    .= username
+        , "firstname"   .= firstname
+        , "lastname"    .= lastname
+        , "name"        .= name
         ]
 
 instance FromJSON Peer where
@@ -54,3 +60,25 @@ instance FromJSON Peer where
                 <*> v .:? "firstname"
                 <*> v .:? "lastname"
                 <*> v .:? "name"
+
+-- mkPeerWithoutOptional makes a new Peer with Nothing value
+-- for whole optional fields
+mkPeerWithDefaults :: PeerType -> UUID -> Peer
+mkPeerWithDefaults peerTy peerId = Peer {peerType=peerTy
+                , peerId            =   peerId
+                , peerUserName      =   Nothing
+                , peerFirstName     =   Nothing
+                , peerLastName      =   Nothing
+                , peerName          =   Nothing}
+
+mkUserWithDefaults :: UUID -> Peer
+mkUserWithDefaults = mkPeerWithDefaults UserPeer
+
+mkBotWithDefaults :: UUID -> Peer
+mkBotWithDefaults = mkPeerWithDefaults BotPeer
+
+mkChannelWithDefaults :: UUID -> Peer
+mkChannelWithDefaults = mkPeerWithDefaults ChannelPeer
+
+mkGroupWithDefaults :: UUID -> Peer
+mkGroupWithDefaults = mkPeerWithDefaults GroupPeer

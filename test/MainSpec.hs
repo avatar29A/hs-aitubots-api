@@ -33,17 +33,13 @@ spec name token chatid = do
 
     describe "/sendMessage" $
         it "responds with code 200 - empty result" $ do
-            uniq <- liftIO UUIDV4.nextRandom
             let peerId = fromJust (UUID.fromString "fe909ae9-b048-11e8-81c3-0242c0a88006")
-            let peer = Peer {peerType=UserPeer
-                , peerId            =   peerId
-                , peerUserName      =   Nothing
-                , peerFirstName     =   Nothing
-                , peerLastName      =   Nothing
-                , peerName          =   Nothing}
+            let peer = mkUserWithDefaults peerId
 
             response <- runAituBotClient token manager $ sendMessage "hi" peer
-            let o = fromLeft (200, "") response
-            liftIO $ print (snd o) 
+            let clientErr = fromLeft (200, "") response
 
-            200 `shouldBe` fst o
+            -- debug: show http error if exists
+            liftIO $ print (snd clientErr) 
+
+            200 `shouldBe` fst clientErr
