@@ -5,8 +5,6 @@
 module Aitu.Bot.Types.Commands.Commands (Commands (..)) where
 
 import Data.Aeson
-import Data.Text
-import GHC.Generics
 
 -- Commands is a wrapper to gethering several command to an one batch
 -- commands : [command1, command2, ... etc]

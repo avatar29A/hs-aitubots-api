@@ -7,6 +7,7 @@ module Aitu.Bot.Types.Commands.SendMessageCommand (
 where
 
 import Data.Aeson
+import Data.Maybe
 import qualified Data.Aeson.Types as JSONTypes
 import Data.Text
 import Data.UUID.Types
@@ -27,7 +28,6 @@ data SendMessageCommand = SendMessageCommand {
     , smContent :: Text
     , smRecipient :: Peer
     , smReplyToMessageId :: Maybe UUID
-    , smInlineCommands :: Maybe [InlineCommand]
     , smInlineCommandRows :: Maybe [RowInlineCommands]
     , smUIState :: Maybe UIState
     , smMediaList :: Maybe [InputMedia]
@@ -40,7 +40,6 @@ mkSendMessageWithDefaults content peer = SendMessageCommand {
     , smContent             = content
     , smRecipient           = peer
     , smReplyToMessageId    = Nothing
-    , smInlineCommands      = Nothing
     , smInlineCommandRows   = Nothing
     , smUIState             = Nothing
     , smMediaList           = Nothing
@@ -48,10 +47,14 @@ mkSendMessageWithDefaults content peer = SendMessageCommand {
 
 instance ToJSON SendMessageCommand where
     toJSON command = object [
-        "type"          .= smType command
-        -- , "localId"     .= smLocalId command
-        , "content"     .= smContent command
-        , "recipient"   .= smRecipient command]
+        "type"                  .= smType command
+        , "localId"             .= smLocalId command
+        , "content"             .= smContent command
+        , "recipient"           .= smRecipient command
+        , "replyToMessageId"    .= smReplyToMessageId command
+        , "inlineCommandRows"   .= maybeToList (smInlineCommandRows command)
+        , "uiState"             .= smUIState command
+        , "mediaList"           .= maybeToList (smMediaList command)]
 
 instance FromJSON SendMessageCommand where
     parseJSON (Object v) =
@@ -60,7 +63,6 @@ instance FromJSON SendMessageCommand where
                             <*> v .: "content"
                             <*> v .: "recipient"
                             <*> v .:? "replyToMessageId"
-                            <*> v .:? "inlineCommands"
                             <*> v .:? "inlineCommandRows"
                             <*> v .:? "uiState"
                             <*> v .:? "mediaList"

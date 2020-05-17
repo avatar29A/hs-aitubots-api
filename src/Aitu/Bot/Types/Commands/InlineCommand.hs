@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.Commands.InlineCommand (InlineCommand) where
+module Aitu.Bot.Types.Commands.InlineCommand (InlineCommand (..)) where
 
 import Data.Aeson
 import Data.Text
@@ -9,9 +9,16 @@ import Data.Text
 -- it has metadata parameter returned to a service when a button is pushed.
 -- doc: https://btsdigital.github.io/bot-api-contract/inlinecommand.html
 data InlineCommand = InlineCommand {
-    icCaption :: Text
-    , icMetadata :: Text
+    inlineCommandCaption :: Text
+    , inlineCommandMetadata :: Text
 } deriving (Show)
+
+instance ToJSON InlineCommand where
+    toJSON command =
+        object [
+            "caption" .= inlineCommandCaption command
+            , "metadata" .= inlineCommandMetadata command
+        ]
 
 instance FromJSON InlineCommand where
     parseJSON (Object v) = 

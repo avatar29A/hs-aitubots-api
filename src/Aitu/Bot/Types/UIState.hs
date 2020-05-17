@@ -23,4 +23,5 @@ data UIState = UIState {
     , formMessage :: Maybe Text
 } deriving (Show, Generic)
 
+instance ToJSON UIState
 instance FromJSON UIState

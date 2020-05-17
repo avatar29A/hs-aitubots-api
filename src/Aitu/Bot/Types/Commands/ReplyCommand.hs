@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.Commands.ReplyCommand (ReplyCommand) where
+module Aitu.Bot.Types.Commands.ReplyCommand (ReplyCommand (..)) where
 
 import Data.Aeson
 import Data.Text
@@ -9,8 +9,12 @@ import Data.Text
 -- Text of a caption is sent to a dialog as new message from user when he pushes this button.
 -- doc: https://btsdigital.github.io/bot-api-contract/replycommand.html
 newtype ReplyCommand = ReplyCommand {
-    rcCaption :: Text
+    replyCaption :: Text
 } deriving (Show)
+
+instance ToJSON ReplyCommand where
+    toJSON command = object [
+        "caption" .= replyCaption command]
 
 instance FromJSON ReplyCommand where
     parseJSON (Object v) = 

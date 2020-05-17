@@ -6,7 +6,7 @@ module Aitu.Bot (
     , runAituBotClient
     , runAituBotClientWithConfig
     , getMe
-    , sendMessage
+    , sendCommand
 ) where
 
 import Control.Monad (void)
@@ -48,11 +48,15 @@ getMe :: AituBotClient Bot
 getMe = do
     response <- get "getMe"
     pure (response >>= mkFromJSON)
+    
+-- getUpdates retrive updates using long polling method
+getUpdates :: AituBotClient [()]
+getUpdates = do 
+    response <- get "updates"
+    pure (response >>= mkFromJSON)
 
--- sendMessage to User
-sendMessage :: T.Text -> Peer -> AituBotClient ()
-sendMessage content peer = do
-    let command = mkSendMessageWithDefaults content peer
+sendCommand :: (ToJSON a) => a -> AituBotClient ()
+sendCommand command = do
     let commands = Commands {commands = [command]}
     response <- post "updates" (encode commands)
 

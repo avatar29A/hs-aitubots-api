@@ -18,7 +18,7 @@ import Aitu.Bot.Types.User as Types
 import Aitu.Bot.Types.Video as Types
 import Aitu.Bot.Types.WebHookInfo as Types
 -- Updates
-import Aitu.Bot.Types.Updates.Message as Types
+
 -- Commands
 import Aitu.Bot.Types.Commands.Commands as Types
 import Aitu.Bot.Types.Commands.InlineCommand as Types
