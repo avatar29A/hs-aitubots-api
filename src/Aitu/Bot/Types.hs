@@ -20,5 +20,6 @@ import Aitu.Bot.Types.WebHookInfo as Types
 import Aitu.Bot.Types.InlineCommand as Types
 import Aitu.Bot.Types.QuickButtonCommand as Types
 import Aitu.Bot.Types.ReplyCommand as Types
+import Aitu.Bot.Types.InputContact as Types
 -- Updates
 import Aitu.Bot.Types.Updates as Types

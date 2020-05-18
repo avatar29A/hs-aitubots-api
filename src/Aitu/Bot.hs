@@ -47,6 +47,22 @@ runAituBotClient token manager  = runAituBotClientWithConfig (Config {token = to
 -- getMe returns Bot about.
 getMe :: AituBotClient Bot
 getMe = get' "getMe"
+
+-- setWebhook
+setWebhook :: WebHookInfo -> AituBotClient ()
+setWebhook info = do
+    response <- post "webhook" (encode info)
+    pure $ void response
+
+-- getWebhook
+getWebhook :: AituBotClient WebHookInfo
+getWebhook = get' "webhook"
+
+-- deleteWebhook
+deleteWebhook :: AituBotClient ()
+deleteWebhook = do
+    response <- invoke "DELETE" "webhook" ""
+    pure $ void response
     
 -- getUpdates retrives updates using long polling way.
 getUpdates :: AituBotClient Updates

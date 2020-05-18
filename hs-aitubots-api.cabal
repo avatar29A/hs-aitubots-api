@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: f6a82437dd47b10199d9962d3ab702563c28468f40985766fe2d8cb44b633137
+-- hash: 45e124052b01fe124c10aec836b5d97e47a28ab25e169291de501a6fd26dbdd1
 
 name:           hs-aitubots-api
 version:        0.1.0.0
@@ -29,10 +29,18 @@ library
   exposed-modules:
       Aitu.Bot
       Aitu.Bot.Commands
+      Aitu.Bot.Commands.ChangeGroupAvatar
+      Aitu.Bot.Commands.ChangeGroupDescription
+      Aitu.Bot.Commands.ChangeGroupTitle
       Aitu.Bot.Commands.Commands
+      Aitu.Bot.Commands.DeleteGroupAvatar
       Aitu.Bot.Commands.DeleteMessage
+      Aitu.Bot.Commands.EditContainerMessage
       Aitu.Bot.Commands.EditMessage
       Aitu.Bot.Commands.ForwardMessage
+      Aitu.Bot.Commands.KickFromGroup
+      Aitu.Bot.Commands.SendContactMessage
+      Aitu.Bot.Commands.SendContainerMessage
       Aitu.Bot.Commands.SendMessage
       Aitu.Bot.Commands.SendUIState
       Aitu.Bot.Types
@@ -46,6 +54,7 @@ library
       Aitu.Bot.Types.ForwardMetadata
       Aitu.Bot.Types.Image
       Aitu.Bot.Types.InlineCommand
+      Aitu.Bot.Types.InputContact
       Aitu.Bot.Types.InputMedia
       Aitu.Bot.Types.Media
       Aitu.Bot.Types.Peer

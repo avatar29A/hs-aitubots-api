@@ -10,8 +10,6 @@ High-level bindings to the Aitu Bot API based on mtl style.
 
 We are support mtl-style way to using Aitu Bot API. Is a based on `AituBotClient` which is just `ReaderT` monad.
 
-:warning: In current time we are support only direct way of interact with API. WebHooks comming soon ... (or see contribute section).
-
 Documentation: https://btsdigital.github.io/bot-api-contract/
 
 ### getMe
@@ -88,21 +86,21 @@ where
 - [x] getMe
 - [x] [sendMessage](https://btsdigital.github.io/bot-api-contract/SendMessage.html)
 - [x] [editMessage](https://btsdigital.github.io/bot-api-contract/EditMessage.html)
-- [ ] [sendContactMessage](https://btsdigital.github.io/bot-api-contract/SendContactMessage.html)
+- [x] [sendContactMessage](https://btsdigital.github.io/bot-api-contract/SendContactMessage.html)
 - [x] [sendUIState](https://btsdigital.github.io/bot-api-contract/SendUiState.html)
 - [x] [forwardMessage](https://btsdigital.github.io/bot-api-contract/ForwardMessage.html)
 - [x] [deteteMessage](https://btsdigital.github.io/bot-api-contract/DeleteMessage.html)
-- [ ] [kickFromGroup](https://btsdigital.github.io/bot-api-contract/KickFromGroup.html)
-- [ ] [changeGroupTitle](https://btsdigital.github.io/bot-api-contract/ChangeGroupTitle.html)
-- [ ] [changeGroupDescription](https://btsdigital.github.io/bot-api-contract/ChangeGroupDescription.html)
-- [ ] [changeGroupAvatar](https://btsdigital.github.io/bot-api-contract/ChangeGroupAvatar.html)
-- [ ] [deleteGroupAvatar](https://btsdigital.github.io/bot-api-contract/ChangeGroupAvatar.html)
-- [ ] [sendContainerMessage](https://btsdigital.github.io/bot-api-contract/SendContainerMessage.html)
-- [ ] [editContainerMessage](https://btsdigital.github.io/bot-api-contract/EditContainerMessage.html)
-- [ ] [retrieveUpdate](https://btsdigital.github.io/bot-api-contract/retrieveUpdate.html)
-- [ ] [setWebhook](https://btsdigital.github.io/bot-api-contract/setwebhook.html)
-- [ ] [deleteWebhook](https://btsdigital.github.io/bot-api-contract/deletewebhook.html)
-- [ ] [getWebhookInfo](https://btsdigital.github.io/bot-api-contract/getwebhookinfo.html)
+- [x] [kickFromGroup](https://btsdigital.github.io/bot-api-contract/KickFromGroup.html)
+- [x] [changeGroupTitle](https://btsdigital.github.io/bot-api-contract/ChangeGroupTitle.html)
+- [x] [changeGroupDescription](https://btsdigital.github.io/bot-api-contract/ChangeGroupDescription.html)
+- [x] [changeGroupAvatar](https://btsdigital.github.io/bot-api-contract/ChangeGroupAvatar.html)
+- [x] [deleteGroupAvatar](https://btsdigital.github.io/bot-api-contract/ChangeGroupAvatar.html)
+- [x] [sendContainerMessage](https://btsdigital.github.io/bot-api-contract/SendContainerMessage.html)
+- [x] [editContainerMessage](https://btsdigital.github.io/bot-api-contract/EditContainerMessage.html)
+- [x] [retrieveUpdate](https://btsdigital.github.io/bot-api-contract/retrieveUpdate.html)
+- [x] [setWebhook](https://btsdigital.github.io/bot-api-contract/setwebhook.html)
+- [x] [deleteWebhook](https://btsdigital.github.io/bot-api-contract/deletewebhook.html)
+- [x] [getWebhookInfo](https://btsdigital.github.io/bot-api-contract/getwebhookinfo.html)
 
 ## Updates
 
@@ -126,3 +124,5 @@ where
 - [x] [ChannelPermissionsRevoked](https://btsdigital.github.io/bot-api-contract/channelpermissionsrevoked.html)
 
 ## Forms
+
+_TODO_

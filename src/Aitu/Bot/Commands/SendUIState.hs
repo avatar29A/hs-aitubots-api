@@ -14,7 +14,7 @@ import Aitu.Bot.Types.UIState (UIState)
 data SendUIState = SendUIState {
     sendUIStateType                     :: Text
     , sendUIStateRecipient              :: Peer
-    , sendUIStateToDialog               :: Peer
+    , sendUIStateDialog                 :: Peer
     , sendUIStateUIState                :: UIState
 }
 
@@ -22,12 +22,12 @@ instance ToJSON SendUIState where
     toJSON command = object [
         "type"              .= sendUIStateType command
         , "recipient"       .= sendUIStateRecipient command
-        , "toDialog"        .= sendUIStateToDialog command
+        , "dialog"          .= sendUIStateDialog command
         , "uiState"         .= sendUIStateUIState command]
 
 instance FromJSON SendUIState where
     parseJSON (Object o) =
         SendUIState <$> o .: "type"
                         <*> o .: "recipient"
-                        <*> o .: "toDialog"
+                        <*> o .: "dialog"
                         <*> o .: "uiState"
