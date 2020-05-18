@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: c37983977db946aba043c781c41660e85667335ae55f008e296b95126be6035d
+-- hash: bcc6e9085ab59a543b92b9e7764212cc297c0a1a6c442e35237a5f982bc4bc5b
 
 name:           hs-aitubots-api
 version:        0.1.0.0
@@ -43,6 +43,12 @@ library
       Aitu.Bot.Commands.SendContainerMessage
       Aitu.Bot.Commands.SendMessage
       Aitu.Bot.Commands.SendUIState
+      Aitu.Bot.Forms
+      Aitu.Bot.Forms.BottomBar
+      Aitu.Bot.Forms.Form
+      Aitu.Bot.Forms.FormContent
+      Aitu.Bot.Forms.FormHeader
+      Aitu.Bot.Forms.FormOptions
       Aitu.Bot.Types
       Aitu.Bot.Types.Audio
       Aitu.Bot.Types.Avatar
