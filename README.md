@@ -101,6 +101,8 @@ where
 - [x] [setWebhook](https://btsdigital.github.io/bot-api-contract/setwebhook.html)
 - [x] [deleteWebhook](https://btsdigital.github.io/bot-api-contract/deletewebhook.html)
 - [x] [getWebhookInfo](https://btsdigital.github.io/bot-api-contract/getwebhookinfo.html)
+- [ ] uploadMedia
+- [ ] downloadMedia 
 
 ## Updates
 
