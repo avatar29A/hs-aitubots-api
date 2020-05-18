@@ -7,7 +7,7 @@ module Aitu.Bot.Types.Errors (
 
 import qualified Data.ByteString.Lazy.Char8 as BC
 
-import Aitu.Bot.Types.Aliases (HttpCode)
+type HttpCode = Int
 
 type ClientError = (HttpCode, BC.ByteString)
 

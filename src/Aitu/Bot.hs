@@ -29,6 +29,11 @@ import Aitu.Config
 import Aitu.Bot.Types
 import Aitu.Bot.Commands
 
+--
+-- Aliases
+
+type Url = String
+type Token = BS.ByteString
 type Method = BS.ByteString
 
 type AituBotClient a = ReaderT AituBotConfig IO (Either ClientError a)

@@ -6,7 +6,8 @@ module Aitu.Config (
 import Network.HTTP.Client
 import qualified Data.ByteString as BS
 
-import Aitu.Bot.Types.Aliases (Token, Url)
+type Url = String
+type Token = BS.ByteString
 
 data AituBotConfig = Config {
     token :: Token
