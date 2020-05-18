@@ -87,11 +87,11 @@ where
 
 - [x] getMe
 - [x] [sendMessage](https://btsdigital.github.io/bot-api-contract/SendMessage.html)
-- [ ] [editMessage](https://btsdigital.github.io/bot-api-contract/EditMessage.html)
+- [x] [editMessage](https://btsdigital.github.io/bot-api-contract/EditMessage.html)
 - [ ] [sendContactMessage](https://btsdigital.github.io/bot-api-contract/SendContactMessage.html)
-- [ ] [sendUIState](https://btsdigital.github.io/bot-api-contract/SendUiState.html)
-- [ ] [forwardMessage](https://btsdigital.github.io/bot-api-contract/ForwardMessage.html)
-- [ ] [deteteMessage](https://btsdigital.github.io/bot-api-contract/DeleteMessage.html)
+- [x] [sendUIState](https://btsdigital.github.io/bot-api-contract/SendUiState.html)
+- [x] [forwardMessage](https://btsdigital.github.io/bot-api-contract/ForwardMessage.html)
+- [x] [deteteMessage](https://btsdigital.github.io/bot-api-contract/DeleteMessage.html)
 - [ ] [kickFromGroup](https://btsdigital.github.io/bot-api-contract/KickFromGroup.html)
 - [ ] [changeGroupTitle](https://btsdigital.github.io/bot-api-contract/ChangeGroupTitle.html)
 - [ ] [changeGroupDescription](https://btsdigital.github.io/bot-api-contract/ChangeGroupDescription.html)
@@ -124,3 +124,5 @@ where
 - [x] [ChannelAdminDeleted](https://btsdigital.github.io/bot-api-contract/channeladmindeleted.html)
 - [x] [ChannelPermissionsGranted](https://btsdigital.github.io/bot-api-contract/channelpermissionsgranted.html)
 - [x] [ChannelPermissionsRevoked](https://btsdigital.github.io/bot-api-contract/channelpermissionsrevoked.html)
+
+## Forms

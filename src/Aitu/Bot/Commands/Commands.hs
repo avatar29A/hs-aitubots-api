@@ -2,7 +2,7 @@
 {-# LANGUAGE GADTs #-}
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.Commands.Commands (Commands (..)) where
+module Aitu.Bot.Commands.Commands (Commands (..)) where
 
 import Data.Aeson
 

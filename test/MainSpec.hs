@@ -18,6 +18,7 @@ import Network.HTTP.Client
 import Network.HTTP.Client.TLS (tlsManagerSettings)
 import Aitu.Bot
 import Aitu.Bot.Types
+import Aitu.Bot.Commands
 
 spec :: BS.ByteString -> BS.ByteString -> BS.ByteString -> Spec
 spec name token chatid = do 

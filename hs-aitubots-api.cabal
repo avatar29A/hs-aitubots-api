@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 5c9ad7f2412dee6551750b59419863e579fb765ca77ab51ce362dfb8c0ed5ca0
+-- hash: f6a82437dd47b10199d9962d3ab702563c28468f40985766fe2d8cb44b633137
 
 name:           hs-aitubots-api
 version:        0.1.0.0
@@ -28,24 +28,29 @@ source-repository head
 library
   exposed-modules:
       Aitu.Bot
+      Aitu.Bot.Commands
+      Aitu.Bot.Commands.Commands
+      Aitu.Bot.Commands.DeleteMessage
+      Aitu.Bot.Commands.EditMessage
+      Aitu.Bot.Commands.ForwardMessage
+      Aitu.Bot.Commands.SendMessage
+      Aitu.Bot.Commands.SendUIState
       Aitu.Bot.Types
       Aitu.Bot.Types.Aliases
       Aitu.Bot.Types.Audio
       Aitu.Bot.Types.Avatar
       Aitu.Bot.Types.Bot
-      Aitu.Bot.Types.Commands.Commands
-      Aitu.Bot.Types.Commands.InlineCommand
-      Aitu.Bot.Types.Commands.QuickButtonCommand
-      Aitu.Bot.Types.Commands.ReplyCommand
-      Aitu.Bot.Types.Commands.SendMessageCommand
       Aitu.Bot.Types.Contact
       Aitu.Bot.Types.Document
       Aitu.Bot.Types.Errors
       Aitu.Bot.Types.ForwardMetadata
       Aitu.Bot.Types.Image
+      Aitu.Bot.Types.InlineCommand
       Aitu.Bot.Types.InputMedia
       Aitu.Bot.Types.Media
       Aitu.Bot.Types.Peer
+      Aitu.Bot.Types.QuickButtonCommand
+      Aitu.Bot.Types.ReplyCommand
       Aitu.Bot.Types.UIState
       Aitu.Bot.Types.Updates
       Aitu.Bot.Types.User

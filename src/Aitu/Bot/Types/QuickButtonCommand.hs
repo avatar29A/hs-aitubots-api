@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.Commands.QuickButtonCommand (QuickButtonCommand (..)) where
+module Aitu.Bot.Types.QuickButtonCommand (QuickButtonCommand (..)) where
 
 import Data.Aeson
 import Data.Text

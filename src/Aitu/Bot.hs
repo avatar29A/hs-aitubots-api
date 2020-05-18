@@ -27,6 +27,7 @@ import Data.Text.Encoding
 
 import Aitu.Config
 import Aitu.Bot.Types
+import Aitu.Bot.Commands
 
 type Method = BS.ByteString
 
@@ -43,18 +44,15 @@ runAituBotClientWithConfig cfg f = runReaderT f cfg
 runAituBotClient :: Token -> Manager -> AituBotClient a -> IO (Either ClientError a)
 runAituBotClient token manager  = runAituBotClientWithConfig (Config {token = token, manager = manager, apiUrl = defaultApiUrl })
 
--- getMe returns Bot info
+-- getMe returns Bot about.
 getMe :: AituBotClient Bot
-getMe = do
-    response <- get "getMe"
-    pure (response >>= mkFromJSON)
+getMe = get' "getMe"
     
--- getUpdates retrive updates using long polling method
-getUpdates :: AituBotClient [()]
-getUpdates = do 
-    response <- get "updates"
-    pure (response >>= mkFromJSON)
+-- getUpdates retrives updates using long polling way.
+getUpdates :: AituBotClient Updates
+getUpdates = get' "updates"
 
+-- sendCommand is a generic method to invoke Platform commands.
 sendCommand :: (ToJSON a) => a -> AituBotClient ()
 sendCommand command = do
     let commands = Commands {commands = [command]}
@@ -69,6 +67,12 @@ mkFromJSON = coerceEitherStringToEitherCE . eitherDecode
 -- invoke does http request to Aitu Bot Platform and returns raw data or Error.
 get :: Url -> AituBotClient BC.ByteString
 get url = invoke "GET" url "" 
+
+-- get' does GET-query and convert result from Json to a.
+get' :: (FromJSON a) => Url -> AituBotClient a
+get' url = do 
+    response <- get url
+    pure (response >>= mkFromJSON)
 
 -- invoke does http request to Aitu Bot Platform and returns raw data or Error.
 post :: Url -> BC.ByteString -> AituBotClient BC.ByteString

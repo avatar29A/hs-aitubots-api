@@ -6,8 +6,8 @@ import Data.Aeson
 import Data.Text
 import GHC.Generics
 
-import Aitu.Bot.Types.Commands.ReplyCommand (ReplyCommand)
-import Aitu.Bot.Types.Commands.QuickButtonCommand (QuickButtonCommand)
+import Aitu.Bot.Types.ReplyCommand (ReplyCommand)
+import Aitu.Bot.Types.QuickButtonCommand (QuickButtonCommand)
 
 -- UIState  represents a state of current UI between a service and a user.
 -- doc: https://btsdigital.github.io/bot-api-contract/uistate.html

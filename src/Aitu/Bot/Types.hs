@@ -17,11 +17,8 @@ import Aitu.Bot.Types.UIState as Types
 import Aitu.Bot.Types.User as Types
 import Aitu.Bot.Types.Video as Types
 import Aitu.Bot.Types.WebHookInfo as Types
+import Aitu.Bot.Types.InlineCommand as Types
+import Aitu.Bot.Types.QuickButtonCommand as Types
+import Aitu.Bot.Types.ReplyCommand as Types
 -- Updates
-
--- Commands
-import Aitu.Bot.Types.Commands.Commands as Types
-import Aitu.Bot.Types.Commands.InlineCommand as Types
-import Aitu.Bot.Types.Commands.QuickButtonCommand as Types
-import Aitu.Bot.Types.Commands.ReplyCommand as Types
-import Aitu.Bot.Types.Commands.SendMessageCommand as Types
+import Aitu.Bot.Types.Updates as Types

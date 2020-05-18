@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.Commands.SendMessageCommand (
-    SendMessageCommand (..)
+module Aitu.Bot.Commands.SendMessage (
+    SendMessage (..)
     , RowInlineCommands 
     , mkSendMessageWithDefaults)
 where
@@ -17,24 +17,23 @@ import qualified Data.ByteString.Lazy.Char8 as BC
 import Aitu.Bot.Types.Peer (Peer)
 import Aitu.Bot.Types.UIState (UIState)
 import Aitu.Bot.Types.InputMedia (InputMedia)
+import Aitu.Bot.Types.InlineCommand (InlineCommand, RowInlineCommands)
 
-import Aitu.Bot.Types.Commands.InlineCommand (InlineCommand)
-
-type RowInlineCommands = [InlineCommand]
-
-data SendMessageCommand = SendMessageCommand {
-    smType :: Text
-    , smLocalId :: Maybe Text
-    , smContent :: Text
-    , smRecipient :: Peer
-    , smReplyToMessageId :: Maybe UUID
-    , smInlineCommandRows :: Maybe [RowInlineCommands]
-    , smUIState :: Maybe UIState
-    , smMediaList :: Maybe [InputMedia]
+-- SendMessageCommand sends messages from service (bot) to a dialog with a user, group dialog or a channel.
+-- doc: https://btsdigital.github.io/bot-api-contract/SendMessage.html
+data SendMessage = SendMessage {
+    smType                          :: Text
+    , smLocalId                     :: Maybe Text
+    , smContent                     :: Text
+    , smRecipient                   :: Peer
+    , smReplyToMessageId            :: Maybe UUID
+    , smInlineCommandRows           :: Maybe [RowInlineCommands]
+    , smUIState                     :: Maybe UIState
+    , smMediaList                   :: Maybe [InputMedia]
 } deriving (Show)
 
-mkSendMessageWithDefaults :: Text -> Peer -> SendMessageCommand
-mkSendMessageWithDefaults content peer = SendMessageCommand {
+mkSendMessageWithDefaults :: Text -> Peer -> SendMessage
+mkSendMessageWithDefaults content peer = SendMessage {
     smType                  = "SendMessage"
     , smLocalId             = Nothing
     , smContent             = content
@@ -45,7 +44,7 @@ mkSendMessageWithDefaults content peer = SendMessageCommand {
     , smMediaList           = Nothing
 }
 
-instance ToJSON SendMessageCommand where
+instance ToJSON SendMessage where
     toJSON command = object [
         "type"                  .= smType command
         , "localId"             .= smLocalId command
@@ -56,9 +55,9 @@ instance ToJSON SendMessageCommand where
         , "uiState"             .= smUIState command
         , "mediaList"           .= maybeToList (smMediaList command)]
 
-instance FromJSON SendMessageCommand where
+instance FromJSON SendMessage where
     parseJSON (Object v) =
-        SendMessageCommand <$> v .: "type"
+        SendMessage <$> v .: "type"
                             <*> v .:? "localId"
                             <*> v .: "content"
                             <*> v .: "recipient"

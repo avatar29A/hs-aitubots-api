@@ -1,9 +1,14 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.Commands.InlineCommand (InlineCommand (..)) where
+module Aitu.Bot.Types.InlineCommand (
+    InlineCommand (..), 
+    RowInlineCommands (..)
+    ) where
 
 import Data.Aeson
 import Data.Text
+
+type RowInlineCommands = [InlineCommand]
 
 -- InlineCommand represents a type of button sent in a message, 
 -- it has metadata parameter returned to a service when a button is pushed.
