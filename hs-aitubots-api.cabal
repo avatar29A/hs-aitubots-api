@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: bcc6e9085ab59a543b92b9e7764212cc297c0a1a6c442e35237a5f982bc4bc5b
+-- hash: 7cfc6898d1507235e646f63ec7ebfdaf83f14d677b6e56fd2859ee8e344de27d
 
 name:           hs-aitubots-api
 version:        0.1.0.0
@@ -45,10 +45,34 @@ library
       Aitu.Bot.Commands.SendUIState
       Aitu.Bot.Forms
       Aitu.Bot.Forms.BottomBar
+      Aitu.Bot.Forms.Content.Button
+      Aitu.Bot.Forms.Content.Checkbox
+      Aitu.Bot.Forms.Content.DatePicker
+      Aitu.Bot.Forms.Content.Divider
+      Aitu.Bot.Forms.Content.FileMetadata
+      Aitu.Bot.Forms.Content.FormText
+      Aitu.Bot.Forms.Content.Image
+      Aitu.Bot.Forms.Content.Input
+      Aitu.Bot.Forms.Content.Item
+      Aitu.Bot.Forms.Content.ItemButton
+      Aitu.Bot.Forms.Content.ItemInfo
+      Aitu.Bot.Forms.Content.LabeledText
+      Aitu.Bot.Forms.Content.MediaPicker
+      Aitu.Bot.Forms.Content.RadioGroup
+      Aitu.Bot.Forms.Content.SimpleCatalog
+      Aitu.Bot.Forms.Content.Slider
+      Aitu.Bot.Forms.Content.Submit
+      Aitu.Bot.Forms.Content.Switch
+      Aitu.Bot.Forms.Content.TextArea
+      Aitu.Bot.Forms.Content.UserInfo
+      Aitu.Bot.Forms.FlexOptions
       Aitu.Bot.Forms.Form
+      Aitu.Bot.Forms.FormAction
       Aitu.Bot.Forms.FormContent
       Aitu.Bot.Forms.FormHeader
-      Aitu.Bot.Forms.FormOptions
+      Aitu.Bot.Forms.FormIndent
+      Aitu.Bot.Forms.Options
+      Aitu.Bot.Forms.ValidationRules
       Aitu.Bot.Types
       Aitu.Bot.Types.Audio
       Aitu.Bot.Types.Avatar

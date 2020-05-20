@@ -1,3 +1,11 @@
 module Aitu.Bot.Forms.FormHeader (FormHeader (..)) where
 
-data FormHeader = FormHeader {}
+import Data.Text
+
+import Aitu.Bot.Forms.Options (Options)
+
+data FormHeader = FormHeader {
+    formHeaderType              :: Text
+    , formHeaderTitle           :: Text
+    , formHeaderOptions         :: Maybe Options
+}
