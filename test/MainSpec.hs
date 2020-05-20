@@ -20,7 +20,7 @@ import Aitu.Bot
 import Aitu.Bot.Types
 import Aitu.Bot.Commands
 
-spec :: BS.ByteString -> BS.ByteString -> BS.ByteString -> Spec
+spec :: BS.ByteString -> String -> BS.ByteString -> Spec
 spec name token chatid = do 
     manager <- runIO $ newManager tlsManagerSettings
     let peerId = fromJust (UUID.fromString "fe909ae9-b048-11e8-81c3-0242c0a88006")

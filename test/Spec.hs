@@ -19,7 +19,7 @@ data Options = Options {
     opt_integration :: Bool   -- ^ Run integration tests
     , opt_botName   :: Maybe BS.ByteString   -- ^ Bot Name
     , opt_chatId    :: Maybe BS.ByteString   -- ^ Id of a chat or of your bot
-    , opt_botToken  :: Maybe BS.ByteString   -- ^ Token
+    , opt_botToken  :: Maybe String   -- ^ Token
     , opt_hSpecOpts   :: Maybe [String] -- ^ Command line options to pass to hSpec
 }
 
@@ -63,7 +63,7 @@ main = do
             <> progDesc "Run integration tests for Aitu Bot API"
             <> header "\nHelp about integration test's arguments" )
 
-runSpec' :: Bool -> Maybe BS.ByteString -> Maybe BS.ByteString -> Maybe BS.ByteString -> SpecWith ()
+runSpec' :: Bool -> Maybe BS.ByteString -> Maybe BS.ByteString -> Maybe String -> SpecWith ()
 runSpec' True (Just botName) (Just chatid) (Just token) = describe "Main integration tests"
                                                                 $ MainSpec.spec botName token chatid
 runSpec' True _ _ _ = fail "Missing required arguments for integration tests. Run stack test --test-arguments \"--help\" for more info"
