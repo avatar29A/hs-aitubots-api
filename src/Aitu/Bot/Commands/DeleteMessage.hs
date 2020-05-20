@@ -14,7 +14,7 @@ data DeleteMessage = DeleteMessage {
     deleteMessageType               :: Text
     , deleteMessageId               :: UUID
     , deleteMessageDialog           :: Peer
-}
+} deriving (Show)
 
 instance ToJSON DeleteMessage where
     toJSON command = object [

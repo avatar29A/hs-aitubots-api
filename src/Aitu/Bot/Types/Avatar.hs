@@ -1,6 +1,6 @@
 {-#LANGUAGE DeriveGeneric #-}
 
-module Aitu.Bot.Types.Avatar (Avatar) where
+module Aitu.Bot.Types.Avatar (Avatar (..)) where
 
 import Data.Aeson
 import GHC.Generics

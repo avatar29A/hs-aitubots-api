@@ -14,7 +14,7 @@ data ChangeGroupDescription = ChangeGroupDescription {
     changeGroupDescriptionGroupType             :: Text
     , changeGroupDescriptionGroupId             :: UUID
     , changeGroupDescriptionDescription         :: Text
-}
+} deriving (Show)
 
 instance ToJSON ChangeGroupDescription where
     toJSON command = object [

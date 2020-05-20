@@ -19,7 +19,7 @@ data InputContact = InputRegisteredContact {
                         firstName     :: Maybe Text
                         , lastName      :: Maybe Text
                         , phoneNumber   :: Maybe Text
-                    }
+                    } deriving (Show)
 
 instance FromJSON InputContact where
     parseJSON = withObject "InputContact" $ \o -> do

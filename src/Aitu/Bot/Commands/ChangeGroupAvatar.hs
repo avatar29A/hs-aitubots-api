@@ -15,7 +15,7 @@ data ChangeGroupAvatar = ChangeGroupAvatar {
     changeGroupAvatarType             :: Text
     , changeGroupAvatarGroupId        :: UUID
     , changeGroupAvatarFileId         :: UUID
-}
+} deriving (Show)
 
 instance ToJSON ChangeGroupAvatar where
     toJSON command = object [

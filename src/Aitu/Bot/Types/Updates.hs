@@ -3,7 +3,7 @@
 
 module Aitu.Bot.Types.Updates (
     Update (..)
-    , Updates) where
+    , Updates (..)) where
 
 import Data.Aeson
 import Data.Aeson.Types
@@ -32,9 +32,9 @@ data Update =
         , messageContent                            :: Text
         , messageForwardMetadata                    :: Maybe ForwardMetadata
         , messageMedia                              :: Maybe [Media]
-        , messageLikeCount                          :: Int
-        , messageRepostCount                        :: Int
-        , messageViewCount                          :: Int
+        , messageLikeCount                          :: Maybe Int
+        , messageRepostCount                        :: Maybe Int
+        , messageViewCount                          :: Maybe Int
         , messageChannelPostAuthor                  :: Maybe Peer}
     -- This object represents an update about edited message
     -- doc: https://btsdigital.github.io/bot-api-contract/messageedited.html
@@ -149,6 +149,7 @@ data Update =
     | ChannelPermissonRevoked {
         channelPermissionRevokedUpdateId            :: UUID
         , channelPermissionRevokedChannelId         :: UUID}
+        deriving (Show)
 
 instance FromJSON Update where
     parseJSON = withObject "update" $ \o -> do
@@ -162,9 +163,9 @@ instance FromJSON Update where
                 <*> o .: "content"
                 <*> o .:? "forwardMetadata"
                 <*> o .:? "media"
-                <*> o .: "likeCount"
-                <*> o .: "repostCount"
-                <*> o .: "viewCount"
+                <*> o .:? "likeCount"
+                <*> o .:? "repostCount"
+                <*> o .:? "viewCount"
                 <*> o .:? "channelPostAuthor"
             "MessageEdited" -> MessageEdited <$> o .: "updateId"
                 <*> o .: "messageId"
@@ -229,7 +230,7 @@ instance FromJSON Update where
 
 newtype Updates = Updates {
     updates :: [Update]
-}
+} deriving (Show)
 
 instance FromJSON Updates where
     parseJSON (Object v) =

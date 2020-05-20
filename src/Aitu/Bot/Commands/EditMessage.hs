@@ -20,7 +20,7 @@ data EditMessage = EditMessage {
     , editMessageContent                        :: Text
     , editMessageInlineCommandRows              :: Maybe [RowInlineCommands]
     , editMessageUIState                        :: Maybe UIState
-    , editMessageMediaList                      :: Maybe [InputMedia]}
+    , editMessageMediaList                      :: Maybe [InputMedia]} deriving (Show)
 
 instance ToJSON EditMessage where
     toJSON command = object [

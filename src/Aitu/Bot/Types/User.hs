@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.User (User) where
+module Aitu.Bot.Types.User (User (..)) where
 
 import Data.Aeson
 import Data.Text
@@ -11,7 +11,7 @@ import Aitu.Bot.Types.Avatar (Avatar)
 -- User  represents data on a user of a messenger
 -- doc: https://btsdigital.github.io/bot-api-contract/user.html
 data User = User {
-    userId :: UUID
+    userUserId :: UUID
     , userFirstName :: Maybe Text
     , userLastName :: Maybe Text
     , userPhoneNumber :: Maybe Text

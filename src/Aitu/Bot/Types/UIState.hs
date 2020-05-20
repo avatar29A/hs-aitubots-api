@@ -1,6 +1,6 @@
 {-# LANGUAGE DeriveGeneric #-}
 
-module Aitu.Bot.Types.UIState (UIState) where
+module Aitu.Bot.Types.UIState (UIState (..)) where
 
 import Data.Aeson
 import Data.Text

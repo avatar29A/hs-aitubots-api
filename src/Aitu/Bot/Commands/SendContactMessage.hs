@@ -15,7 +15,7 @@ data SendContactMessage = SendContactMessage {
     sendContactMessageType               :: Text
     , sendContactMessageLocalId           :: Maybe Text
     , sendContactMessageRecipient         :: Peer
-    , sendContactMessageInputMedia        :: InputContact}
+    , sendContactMessageInputMedia        :: InputContact} deriving (Show)
 
 instance ToJSON SendContactMessage where
     toJSON command = object [
