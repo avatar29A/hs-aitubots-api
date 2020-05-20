@@ -62,7 +62,7 @@ main = do
         -- here we can invoke API methods
 ```
 
-6. Takes from updates only updates with type of `Message`, and then convert `Message` to `SendMessageCommand` (through foldl)
+6. Takes from updates only updates with type of `Message` and then convert `Message` to `SendMessageCommand` (through foldl)
 
 ```hs
     response  <- runAituBotClient token manager $ do
@@ -82,7 +82,7 @@ main = do
 
 ```
 
-7. Reply to on all messeges
+7. Reply to all messages
 
 ```hs
 -- replay to all messages
