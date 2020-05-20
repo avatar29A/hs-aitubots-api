@@ -17,7 +17,7 @@ data ForwardMessage = ForwardMessage {
     , forwardMessageFromDialog              :: Peer
     , forwardMessageToDialog                :: Peer
     , forwardMessageId                      :: UUID
-}
+} deriving (Show)
 
 instance ToJSON ForwardMessage where
     toJSON command = object [

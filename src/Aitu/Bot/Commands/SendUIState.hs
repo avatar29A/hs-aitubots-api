@@ -16,7 +16,7 @@ data SendUIState = SendUIState {
     , sendUIStateRecipient              :: Peer
     , sendUIStateDialog                 :: Peer
     , sendUIStateUIState                :: UIState
-}
+} deriving (Show)
 
 instance ToJSON SendUIState where
     toJSON command = object [

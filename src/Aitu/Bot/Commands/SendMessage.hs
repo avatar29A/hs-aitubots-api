@@ -2,7 +2,6 @@
 
 module Aitu.Bot.Commands.SendMessage (
     SendMessage (..)
-    , RowInlineCommands 
     , mkSendMessageWithDefaults)
 where
 

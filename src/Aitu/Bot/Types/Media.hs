@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Types.Media (Media) where
+module Aitu.Bot.Types.Media (Media (..)) where
 
 import Data.Aeson
 import Data.Text
@@ -8,7 +8,7 @@ import Data.Text
 data Media = Media {
     mediaType :: Text
     , mediaFileId :: Maybe Text
-}
+} deriving (Show)
 
 instance FromJSON Media where
     parseJSON (Object v) =

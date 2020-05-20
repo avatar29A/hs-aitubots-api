@@ -20,7 +20,7 @@ data SendContainerMessage = SendContainerMessage {
     , sendContainerMessageLocalId         :: Maybe UUID
     , sendContainerMessageRecipient       :: Peer
     , sendContainerMessageContent         :: Text
-}
+} deriving (Show)
 
 instance ToJSON SendContainerMessage where
     toJSON command = object [

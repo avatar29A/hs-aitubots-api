@@ -14,7 +14,7 @@ data KickFromGroup = KickFromGroup {
     kickFromGroupType           :: Text
     , kickFromGroupId           :: UUID
     , kickFromPeerToKick        :: Peer
-}
+} deriving (Show)
 
 instance ToJSON KickFromGroup where
     toJSON command = object [

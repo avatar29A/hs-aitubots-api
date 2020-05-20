@@ -14,7 +14,7 @@ import Aitu.Bot.Types.Peer (Peer)
 data DeleteGroupAvatar = DeleteGroupAvatar {
     deleteGroupAvatarType             :: Text
     , deleteGroupAvatarGroupId        :: UUID
-}
+} deriving (Show)
 
 instance ToJSON DeleteGroupAvatar where
     toJSON command = object [

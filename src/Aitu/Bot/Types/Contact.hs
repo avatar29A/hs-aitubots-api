@@ -1,8 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 module Aitu.Bot.Types.Contact (
-    RegisteredContact, 
-    UnRegisteredContact) where
+    RegisteredContact (..), 
+    UnRegisteredContact (..)) where
 
 import Data.Aeson
 import Data.Text
@@ -28,7 +28,7 @@ data UnRegisteredContact = UnRegisteredContact {
     , urcFirstName :: Maybe String
     , urcLastName :: Maybe String
     , urcPhoneNumber :: Maybe String
-}
+} deriving (Show)
 
 instance FromJSON UnRegisteredContact where
     parseJSON (Object v) =

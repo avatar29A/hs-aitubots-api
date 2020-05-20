@@ -19,7 +19,7 @@ data EditContainerMessage = EditContainerMessage {
     editContainerMessageType              :: Text
     , editContainerMessageRecipient       :: Peer
     , editContainerMessageContent         :: Text
-}
+} deriving (Show)
 
 instance ToJSON EditContainerMessage where
     toJSON command = object [

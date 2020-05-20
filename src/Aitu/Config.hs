@@ -7,7 +7,7 @@ import Network.HTTP.Client
 import qualified Data.ByteString as BS
 
 type Url = String
-type Token = BS.ByteString
+type Token = String
 
 data AituBotConfig = Config {
     token :: Token
