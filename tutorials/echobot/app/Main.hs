@@ -24,15 +24,17 @@ main = do
         response  <- runAituBotClient token manager $ do
             eitherUpdates <- getUpdates
 
+            let updates' = either (const []) updates eitherUpdates
+
             -- Extracts Updates from Either and converts to SendMessageCommands (only Message updates)
             let sendMessageCommands = foldl (\acc u -> case u of
                                         Message {messageAuthor=author, 
                                                     messageContent=content} -> 
                                                         mkSendMessageWithDefaults content author : acc
                                         _ -> acc
-                                        ) [] (either (const []) updates eitherUpdates)
+                                        ) [] updates'
 
-            -- response on all Messages
+            -- replay to all messages
             foldM (\acc cmd -> sendCommand cmd) (Right ()) sendMessageCommands
 
         pure ()
