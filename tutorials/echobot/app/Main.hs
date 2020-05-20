@@ -1,16 +1,10 @@
 module Main where
 
 import System.Environment (lookupEnv)
-import Control.Monad (forever, void, forM_, foldM)
-import Control.Monad.IO.Class (liftIO)
-import Control.Concurrent (forkIO)
+import Control.Monad (forever, foldM)
 import Network.HTTP.Client (newManager)
 import Network.HTTP.Client.TLS (tlsManagerSettings)
 import Data.Maybe (fromMaybe)
-import Data.Either (fromRight, fromLeft, isLeft)
-import Data.List (foldl')
-
-import qualified Data.ByteString.Lazy.Char8 as BC
 
 import Aitu.Bot
 import Aitu.Bot.Types
