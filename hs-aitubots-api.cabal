@@ -4,10 +4,10 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 01d70365ca164553fcbcd46696724e69bb879509819350045516798f9ed8eb44
+-- hash: d3beeba68c86eaed5ab3be8073be0acd904b5e836c10ff64ddca82cc1e02a78b
 
 name:           hs-aitubots-api
-version:        0.1.0.0
+version:        0.2.0.0
 description:    Please see the README on GitHub at <https://github.com/avatar29A/hs-aitubots-api/READMME.md>
 homepage:       https://github.com/avatar29A/hs-aitubots-api#readme
 bug-reports:    https://github.com/avatar29A/hs-aitubots-api/issues

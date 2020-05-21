@@ -28,7 +28,7 @@ dependencies:
 - mtl
 - base >= 4.7 && < 5
 name: hs-aitubots-api
-version: 0.1.0.0
+version: 0.2.0.0
 extra-source-files:
 - README.md
 - ChangeLog.md
