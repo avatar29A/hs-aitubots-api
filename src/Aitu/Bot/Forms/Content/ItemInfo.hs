@@ -1,15 +1,20 @@
+{-# LANGUAGE DuplicateRecordFields #-}
 
-module Aitu.Bot.Forms.Content.ItemInfo (ItemInfo (..)) where
+module Aitu.Bot.Forms.Content.ItemInfo
+    ( ItemInfo(..)
+    )
+where
 
-import Data.Text
-import Aitu.Bot.Forms.Options (Options)
-import Aitu.Bot.Forms.Content.FileMetadata (FileMetadata)
+import           Data.Text
+import           Aitu.Bot.Forms.Options         ( Options )
+import           Aitu.Bot.Forms.Content.FileMetadata
+                                                ( FileMetadata )
 
 data ItemInfo = ItemInfo {
-    iteminfoContentId                   :: Text
-    , itemminfoContentType              :: Text
-    , iteminfoTitle                     :: Maybe Text
-    , iteminfoSubtitle                  :: Maybe Text
-    , iteminfoFilemMetadata             :: Maybe FileMetadata
-    , iteminfoOptions                   :: Maybe Options
+    contentId                   :: Text
+    , contentType               :: Text
+    , title                     :: Maybe Text
+    , subtitle                  :: Maybe Text
+    , filemMetadata             :: Maybe FileMetadata
+    , options                   :: Maybe Options
 }

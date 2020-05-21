@@ -1,10 +1,15 @@
-module Aitu.Bot.Forms.Content.Divider (Divider (..)) where
+{-# LANGUAGE DuplicateRecordFields #-}
 
-import Data.Text
-import Aitu.Bot.Forms.Options (Options)
+module Aitu.Bot.Forms.Content.Divider
+    ( Divider(..)
+    )
+where
+
+import           Data.Text
+import           Aitu.Bot.Forms.Options         ( Options )
 
 data Divider = Divider {
-    dividerContentType            :: Text
-    , dividerContentId            :: Text
-    , dividerOptions              :: Maybe Options
+    contentType            :: Text
+    , contentId            :: Text
+    , options              :: Maybe Options
 }

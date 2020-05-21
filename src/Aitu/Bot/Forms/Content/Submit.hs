@@ -1,13 +1,17 @@
-module Aitu.Bot.Forms.Content.Submit (Submit (..)) where
+{-# LANGUAGE DuplicateRecordFields #-}
+module Aitu.Bot.Forms.Content.Submit
+    ( Submit(..)
+    )
+where
 
-import Data.Text
-import Aitu.Bot.Forms.Options (Options)
-import Aitu.Bot.Forms.FormAction (FormAction)
+import           Data.Text
+import           Aitu.Bot.Forms.Options         ( Options )
+import           Aitu.Bot.Forms.FormAction      ( FormAction )
 
 data Submit = Submit {
-    submitContentId         :: Text
-    , submitContentType     :: Text
-    , submitTitle           :: Text
-    , submitFormAction      :: FormAction
-    , submitOptions         :: Maybe Options
+    contentId         :: Text
+    , contentType     :: Text
+    , title           :: Text
+    , formAction      :: FormAction
+    , options         :: Maybe Options
 }

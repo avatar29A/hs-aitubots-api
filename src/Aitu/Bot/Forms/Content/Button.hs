@@ -1,14 +1,20 @@
-module Aitu.Bot.Forms.Content.Button (Button (..)) where
+{-# LANGUAGE DuplicateRecordFields #-}
 
-import Data.Text
+module Aitu.Bot.Forms.Content.Button
+    ( Button(..)
+    )
+where
 
-import Aitu.Bot.Forms.Options (Options)
-import Aitu.Bot.Forms.FormAction (FormAction)
+import           Data.Text
+
+import           Aitu.Bot.Forms.Options         ( Options )
+import           Aitu.Bot.Forms.FormAction      ( FormAction )
 
 data Button = Button {
-    buttonContentId             :: Text
-    , buttonTitle               :: Maybe Text
+    contentId                   :: Text
+    , contentType               :: Text
     , buttonType                :: Maybe Text
-    , buttonOptions             :: Maybe Options
-    , buttonFormAction          :: Maybe FormAction
+    , title                     :: Maybe Text
+    , options                   :: Maybe Options
+    , formAction                :: Maybe FormAction
 }

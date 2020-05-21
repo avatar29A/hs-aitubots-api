@@ -1,10 +1,15 @@
-module Aitu.Bot.Forms.Content.FileMetadata (FileMetadata (..)) where
+{-# LANGUAGE DuplicateRecordFields #-}
 
-import Data.Text
-import Aitu.Bot.Forms.Options (Options)
+module Aitu.Bot.Forms.Content.FileMetadata
+    ( FileMetadata(..)
+    )
+where
+
+import           Data.Text
+import           Aitu.Bot.Forms.Options         ( Options )
 
 data FileMetadata = FileMetadata {
-    filemetadataFileType            :: Text
-    , filemetadataFileId            :: Text
-    , filemetadataFileName          :: Text
+    fileType            :: Text
+    , fileId            :: Text
+    , fileName          :: Text
 }

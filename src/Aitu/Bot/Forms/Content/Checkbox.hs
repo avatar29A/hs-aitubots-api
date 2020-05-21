@@ -1,14 +1,20 @@
-module Aitu.Bot.Forms.Content.Checkbox (Checkbox (..)) where
+{-# LANGUAGE DuplicateRecordFields #-}
 
-import Data.Text
+module Aitu.Bot.Forms.Content.Checkbox
+    ( Checkbox(..)
+    )
+where
 
-import Aitu.Bot.Forms.Options (Options)
-import Aitu.Bot.Forms.ValidationRules (ValidationRules)
+import           Data.Text
+
+import           Aitu.Bot.Forms.Options         ( Options )
+import           Aitu.Bot.Forms.ValidationRules ( ValidationRules )
 
 data Checkbox = Checkbox {
-    checkboxContentId               :: Text
-    , checkboxTitle                 :: Text
-    , checkboxDefaultState          :: Bool
-    , checkboxOptions               :: Maybe Options
-    , checkboxValidationsRules      :: Maybe ValidationRules 
+    contentId                       :: Text
+    , contentType                   :: Text
+    , title                         :: Text
+    , defaultState                  :: Bool
+    , options                       :: Maybe Options
+    , validationsRules              :: Maybe ValidationRules
 }

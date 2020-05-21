@@ -1,15 +1,20 @@
-module Aitu.Bot.Forms.Content.DatePicker (DatePicker (..)) where
+{-# LANGUAGE DuplicateRecordFields #-}
 
-import Data.Text
+module Aitu.Bot.Forms.Content.DatePicker
+    ( DatePicker(..)
+    )
+where
 
-import Aitu.Bot.Forms.ValidationRules (ValidationRules)
-import Aitu.Bot.Forms.Options (Options)
+import           Data.Text
+
+import           Aitu.Bot.Forms.ValidationRules ( ValidationRules )
+import           Aitu.Bot.Forms.Options         ( Options )
 
 data DatePicker = DatePicker {
-    datepickerContentId                 :: Text
-    , datepickerContentType             :: Text
-    , datepickerTitle                   :: Maybe Text
-    , datepickerSelectedDate            :: Maybe Text
-    , datepickerValidationRules         :: Maybe ValidationRules
-    , datepickerOptions                 :: Maybe Options
+    contentId                 :: Text
+    , contentType             :: Text
+    , title                   :: Maybe Text
+    , selectedDate            :: Maybe Text
+    , validationRules         :: Maybe ValidationRules
+    , options                 :: Maybe Options
 }

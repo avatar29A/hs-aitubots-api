@@ -1,12 +1,16 @@
-module Aitu.Bot.Forms.Content.Switch (Switch (..)) where
+{-# LANGUAGE DuplicateRecordFields #-}
+module Aitu.Bot.Forms.Content.Switch
+    ( Switch(..)
+    )
+where
 
-import Data.Text
-import Aitu.Bot.Forms.Options (Options)
+import           Data.Text
+import           Aitu.Bot.Forms.Options         ( Options )
 
 data Switch = Switch {
-    switchContentId                     :: Text
-    , switchContentType                 :: Text
-    , switchTitle                       :: Maybe Text
-    , switchDefaultState                :: Bool
-    , switchOptions                     :: Maybe Options
+    contentId                     :: Text
+    , contentType                 :: Text
+    , title                       :: Maybe Text
+    , defaultState                :: Bool
+    , options                     :: Maybe Options
 }

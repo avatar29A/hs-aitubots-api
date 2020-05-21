@@ -1,11 +1,15 @@
-module Aitu.Bot.Forms.Content.UserInfo (UserInfo (..)) where
+{-# LANGUAGE DuplicateRecordFields #-}
+module Aitu.Bot.Forms.Content.UserInfo
+    ( UserInfo(..)
+    )
+where
 
-import Data.Text
-import Aitu.Bot.Forms.Options (Options)
+import           Data.Text
+import           Aitu.Bot.Forms.Options         ( Options )
 
 data UserInfo = UserInfo {
-    userinfoContentType         :: Text
-    , userinfoContentId         :: Text
-    , userinfoUserId            :: Text
-    , userinfoOptions           :: Maybe Options
+    contentType         :: Text
+    , contentId         :: Text
+    , userId            :: Text
+    , options           :: Maybe Options
 }

@@ -1,12 +1,16 @@
-module Aitu.Bot.Forms.Content.LabeledText (LabeledText (..)) where
+{-# LANGUAGE DuplicateRecordFields #-}
+module Aitu.Bot.Forms.Content.LabeledText
+    ( LabeledText(..)
+    )
+where
 
-import Data.Text
-import Aitu.Bot.Forms.Options (Options)
+import           Data.Text
+import           Aitu.Bot.Forms.Options         ( Options )
 
 data LabeledText = LabeledText {
-    labeledtextContentType          :: Text
-    , labeledtextContentId          :: Text
-    , labeledtextLabel              :: Text
-    , labeledtextTitle              :: Text
-    , labeledtextOptions            :: Maybe Text
+    contentType          :: Text
+    , contentId          :: Text
+    , label              :: Text
+    , title              :: Text
+    , options            :: Maybe Text
 }
