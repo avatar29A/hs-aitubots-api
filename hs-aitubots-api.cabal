@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: d3beeba68c86eaed5ab3be8073be0acd904b5e836c10ff64ddca82cc1e02a78b
+-- hash: f83da6e094cfffbc04d877e521e4faedcc30c56f278b94f26298ab1a701fd1a5
 
 name:           hs-aitubots-api
 version:        0.2.0.0
@@ -44,7 +44,7 @@ library
       Aitu.Bot.Commands.SendMessage
       Aitu.Bot.Commands.SendUIState
       Aitu.Bot.Forms
-      Aitu.Bot.Forms.BottomBar
+      Aitu.Bot.Forms.Content.BottomBar
       Aitu.Bot.Forms.Content.Button
       Aitu.Bot.Forms.Content.Checkbox
       Aitu.Bot.Forms.Content.Content
@@ -54,8 +54,6 @@ library
       Aitu.Bot.Forms.Content.FormText
       Aitu.Bot.Forms.Content.Image
       Aitu.Bot.Forms.Content.Input
-      Aitu.Bot.Forms.Content.Item
-      Aitu.Bot.Forms.Content.ItemButton
       Aitu.Bot.Forms.Content.ItemInfo
       Aitu.Bot.Forms.Content.LabeledText
       Aitu.Bot.Forms.Content.MediaPicker
@@ -69,9 +67,8 @@ library
       Aitu.Bot.Forms.FlexOptions
       Aitu.Bot.Forms.Form
       Aitu.Bot.Forms.FormAction
-      Aitu.Bot.Forms.FormContent
-      Aitu.Bot.Forms.FormHeader
-      Aitu.Bot.Forms.FormIndent
+      Aitu.Bot.Forms.Header
+      Aitu.Bot.Forms.Indent
       Aitu.Bot.Forms.Options
       Aitu.Bot.Forms.ValidationRules
       Aitu.Bot.Types

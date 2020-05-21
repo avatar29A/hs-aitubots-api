@@ -1,7 +1,13 @@
-module Aitu.Bot.Forms (module Forms) where
+module Aitu.Bot.Forms
+    ( module Forms
+    )
+where
 
-import Aitu.Bot.Forms.Form                  as Forms
-import Aitu.Bot.Forms.FormHeader            as Forms
-import Aitu.Bot.Forms.Options               as Forms
-import Aitu.Bot.Forms.FormContent           as Forms
-import Aitu.Bot.Forms.BottomBar             as Forms
+import           Aitu.Bot.Forms.Form           as Forms
+import           Aitu.Bot.Forms.Header         as Forms
+import           Aitu.Bot.Forms.Options        as Forms
+import           Aitu.Bot.Forms.FlexOptions    as Forms
+import           Aitu.Bot.Forms.FormAction     as Forms
+import           Aitu.Bot.Forms.Indent         as Forms
+import           Aitu.Bot.Forms.ValidationRules
+                                               as Forms

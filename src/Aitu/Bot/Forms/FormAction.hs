@@ -1,9 +1,24 @@
-module Aitu.Bot.Forms.FormAction (FormAction (..)) where
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DuplicateRecordFields #-}
+{-# LANGUAGE OverloadedStrings #-}
 
-import Data.Text
+module Aitu.Bot.Forms.FormAction
+    ( FormAction(..)
+    )
+where
+
+import           Data.Aeson
+import           Data.Text
 
 data FormAction = FormAction {
-    formActionAction            :: Text
-    , formActionDataTemplate    :: Maybe Text
-    , formActionHiddenMetadata  :: Maybe Text
-}
+    action            :: Text
+    , dataTemplate    :: Maybe Text
+    , hiddenMetadata  :: Maybe Text
+} deriving (Show)
+
+instance ToJSON FormAction where
+    toJSON FormAction {..} = object
+        [ "action" .= action
+        , "data_template" .= dataTemplate
+        , "hidden_metadata" .= hiddenMetadata
+        ]

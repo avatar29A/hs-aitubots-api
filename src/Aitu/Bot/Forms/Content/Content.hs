@@ -1,37 +1,56 @@
+{-# LANGUAGE GADTs #-}
+{-# LANGUAGE StandaloneDeriving #-}
+{-# LANGUAGE OverloadedStrings #-}
+
 module Aitu.Bot.Forms.Content.Content
-    ( module Content
+    ( Content(..)
+    , ContentType(..)
     )
 where
 
-import           Aitu.Bot.Forms.Content.Button as Content
-import           Aitu.Bot.Forms.Content.Checkbox
-                                               as Content
-import           Aitu.Bot.Forms.Content.DatePicker
-                                               as Content
-import           Aitu.Bot.Forms.Content.Divider
-                                               as Content
-import           Aitu.Bot.Forms.Content.FileMetadata
-                                               as Content
-import           Aitu.Bot.Forms.Content.FormText
-                                               as Content
-import           Aitu.Bot.Forms.Content.Image  as Content
-import           Aitu.Bot.Forms.Content.Input  as Content
-import           Aitu.Bot.Forms.Content.Item   as Content
-import           Aitu.Bot.Forms.Content.ItemInfo
-                                               as Content
-import           Aitu.Bot.Forms.Content.LabeledText
-                                               as Content
-import           Aitu.Bot.Forms.Content.MediaPicker
-                                               as Content
-import           Aitu.Bot.Forms.Content.RadioGroup
-                                               as Content
-import           Aitu.Bot.Forms.Content.SimpleCatalog
-                                               as Content
-import           Aitu.Bot.Forms.Content.Slider as Content
+import           Data.Text
+import           Data.Aeson
 
-import           Aitu.Bot.Forms.Content.Submit as Content
-import           Aitu.Bot.Forms.Content.Switch as Content
-import           Aitu.Bot.Forms.Content.TextArea
-                                               as Content
-import           Aitu.Bot.Forms.Content.UserInfo
-                                               as Content
+data ContentType = Button
+                    | Divider
+                    | BottomBar
+                    | Image
+                    | ItemInfo
+                    | LabeledText
+                    | SimpleCatalog
+                    | DatePicker
+                    | Checkbox
+                    | Text
+                    | Input
+                    | Item
+                    | ItemButton
+                    | MediaPicker
+                    | RadioGroup
+                    | Slider
+                    | Submit
+                    | Switch
+                    | TextArea
+                    | UserInfo
+
+deriving instance Show ContentType
+
+instance ToJSON ContentType where
+    toJSON UserInfo      = String "user_info"
+    toJSON TextArea      = String "text_area"
+    toJSON RadioGroup    = String "radio_group"
+    toJSON MediaPicker   = String "media_picker"
+    toJSON DatePicker    = String "date_picker"
+    toJSON SimpleCatalog = String "simple_catalog"
+    toJSON LabeledText   = String "labeled_text"
+    toJSON ItemButton    = String "item_button"
+    toJSON ItemInfo      = String "item_info"
+    toJSON BottomBar     = String "bottom_bar"
+    toJSON v             = String $ (toLower . pack . show) v
+
+data Content where
+    Content ::(ToJSON a, Show a) => a -> Content
+
+instance ToJSON Content where
+    toJSON (Content c) = toJSON c
+
+deriving instance Show Content

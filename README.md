@@ -128,33 +128,30 @@ where
 ## Forms
 
 - [x] Form
-- [ ] Header
-- [ ] Options
-- [ ] BottomBar
-- [ ] FlexOptions
-- [ ] FormAction
-- [ ] Indent
-- [ ] ValidationRule
-- [ ] Content
-    - [ ] Button
-    - [ ] Checkbox
-    - [ ] Content
-    - [ ] CustomContainer
-    - [ ] DatePicker
-    - [ ] Divider
-    - [ ] FileMetadata
-    - [ ] Image
-    - [ ] Input
-    - [ ] Item
-    - [ ] ItemButton
-    - [ ] ItemInfo
-    - [ ] LabeledText
-    - [ ] MediaPicker
-    - [ ] RadioGroup
-    - [ ] SimpleCatalog
-    - [ ] Slider
-    - [ ] Submit
-    - [ ] Switch
-    - [ ] Text
-    - [ ] TextArea
-    - [ ] UserInfo
+- [x] Header
+- [x] Options
+- [x] FlexOptions
+- [x] FormAction
+- [x] Indent
+- [x] ValidationRule
+- [x] Content
+    - [x] Content
+    - [x] BottomBar
+    - [x] Button
+    - [x] Checkbox
+    - [x] DatePicker
+    - [x] Divider
+    - [x] FileMetadata
+    - [x] Image
+    - [x] Input
+    - [x] ItemInfo
+    - [x] LabeledText
+    - [x] MediaPicker
+    - [x] RadioGroup
+    - [x] SimpleCatalog
+    - [x] Slider
+    - [x] Submit
+    - [x] Switch
+    - [x] Text
+    - [x] TextArea
+    - [x] UserInfo
