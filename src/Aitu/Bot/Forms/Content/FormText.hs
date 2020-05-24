@@ -11,21 +11,23 @@ import           Data.Aeson              hiding ( Options )
 import           Data.Text
 import           Aitu.Bot.Forms.Options         ( Options )
 import           Aitu.Bot.Forms.FormAction      ( FormAction )
-import           Aitu.Bot.Forms.Content.Content ( ContentType )
+import qualified Aitu.Bot.Forms.Content.Content
+                                               as Content
+
+type Title = Text
 
 data FormText = FormText {
-    contentId               :: Text
-    , contentType           :: ContentType
-    , title                 :: Text
-    , options               :: Maybe Options
+    contentId               :: Content.ContentID
+    , title                 :: Title
     , formAction            :: Maybe FormAction
+    , options               :: Maybe Options
 }
 
 instance ToJSON FormText where
     toJSON FormText {..} = object
         [ "id" .= contentId
-        , "type" .= contentType
+        , "type" .= Content.FormText
         , "title" .= title
-        , "options" .= options
         , "form_action" .= formAction
+        , "options" .= options
         ]

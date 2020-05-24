@@ -13,20 +13,20 @@ import           Aitu.Bot.Forms.Options         ( Options )
 import           Aitu.Bot.Forms.Content.FileMetadata
                                                 ( FileMetadata )
 import           Aitu.Bot.Forms.FormAction      ( FormAction )
-import           Aitu.Bot.Forms.Content.Content ( ContentType )
+import qualified Aitu.Bot.Forms.Content.Content
+                                               as Content
 
 data Image = Image {
-    contentId              :: Text
-    , contentType          :: ContentType
+    contentId              :: Content.ContentID
     , fileMetadata         :: FileMetadata
     , options              :: Maybe Options
     , formAction           :: Maybe FormAction
-}
+} deriving (Show)
 
 instance ToJSON Image where
     toJSON Image {..} = object
         [ "id" .= contentId
-        , "type" .= contentType
+        , "type" .= Content.Image
         , "file_metadata" .= fileMetadata
         , "options" .= options
         , "form_action" .= formAction

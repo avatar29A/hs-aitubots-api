@@ -4,50 +4,59 @@
 
 module Aitu.Bot.Forms.Content.SimpleCatalog
     ( SimpleCatalog(..)
+    , SimpleCatalogItem(..)
     )
 where
 
 import           Data.Aeson              hiding ( Options )
 import           Data.Text
-import           Aitu.Bot.Forms.Options         ( Options )
-import           Aitu.Bot.Forms.Content.Content ( ContentType )
+import           Aitu.Bot.Forms.Options         ( Options
+                                                , CatalogItemType
+                                                )
+import qualified Aitu.Bot.Forms.Content.Content
+                                               as Content
 import           Aitu.Bot.Forms.FormAction      ( FormAction )
 import           Aitu.Bot.Forms.Content.FileMetadata
                                                 ( FileMetadata )
 
+type Title = Text
+type Subtitle = Text
+
 data SimpleCatalog = SimpleCatalog {
-    contentId                  :: Text
-    , contentType              :: ContentType
+    contentId                  :: Content.ContentID
+    , items                    :: [SimpleCatalogItem]
     , options                  :: Maybe Options
-    , items                    :: [Item]
 } deriving (Show)
 
 instance ToJSON SimpleCatalog where
     toJSON SimpleCatalog {..} = object
         [ "id" .= contentId
-        , "type" .= contentType
-        , "options" .= options
+        , "type" .= Content.SimpleCatalog
         , "items" .= items
+        , "options" .= options
         ]
 
-data Item = Item {
+data SimpleCatalogItem = SimpleCatalogItem {
     itemId                          :: Text
-    , title                         :: Text
-    , subtitle                      :: Text
-    , options                       :: Maybe Options
+    , title                         :: Title
+    , subtitle                      :: Subtitle
+    , description                   :: Maybe Text
     , action                        :: Maybe FormAction
-    , fileMetadata                  :: Maybe FileMetadata
     , buttons                       :: Maybe [ItemButton]
+    , fileMetadata                  :: Maybe FileMetadata
+    , options                       :: Maybe Options
 } deriving (Show)
 
-instance ToJSON Item where
-    toJSON Item {..} = object
-        [ "title" .= title
+instance ToJSON SimpleCatalogItem where
+    toJSON SimpleCatalogItem {..} = object
+        [ "id" .= itemId
+        , "title" .= title
         , "subtitle" .= subtitle
-        , "options" .= options
-        , "action" .= action
+        , "description" .= description
+        , "form_action" .= action
+        , "item_buttons" .= buttons
         , "file_metadata" .= fileMetadata
-        , "buttons" .= buttons
+        , "options" .= options
         ]
 
 data ItemButton = ItemButton {

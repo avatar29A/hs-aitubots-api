@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: f83da6e094cfffbc04d877e521e4faedcc30c56f278b94f26298ab1a701fd1a5
+-- hash: 4898caec675424a16affcf31fc3ca014386ee5b112cd117023ca4a9460451ff8
 
 name:           hs-aitubots-api
 version:        0.2.0.0
@@ -48,6 +48,7 @@ library
       Aitu.Bot.Forms.Content.Button
       Aitu.Bot.Forms.Content.Checkbox
       Aitu.Bot.Forms.Content.Content
+      Aitu.Bot.Forms.Content.CustomContainer
       Aitu.Bot.Forms.Content.DatePicker
       Aitu.Bot.Forms.Content.Divider
       Aitu.Bot.Forms.Content.FileMetadata
@@ -63,6 +64,7 @@ library
       Aitu.Bot.Forms.Content.Submit
       Aitu.Bot.Forms.Content.Switch
       Aitu.Bot.Forms.Content.TextArea
+      Aitu.Bot.Forms.Content.TextWidget
       Aitu.Bot.Forms.Content.UserInfo
       Aitu.Bot.Forms.FlexOptions
       Aitu.Bot.Forms.Form
@@ -92,6 +94,7 @@ library
       Aitu.Bot.Types.User
       Aitu.Bot.Types.Video
       Aitu.Bot.Types.WebHookInfo
+      Aitu.Bot.Widgets
       Aitu.Config
   other-modules:
       Paths_hs_aitubots_api

@@ -2,37 +2,30 @@
 {-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Forms.Content.DatePicker
-    ( DatePicker(..)
+module Aitu.Bot.Forms.Content.CustomContainer
+    ( CustomContainer(..)
     )
 where
 
 import           Data.Aeson              hiding ( Options )
 import           Data.Text
 
-import           Aitu.Bot.Forms.ValidationRules ( ValidationRules )
 import           Aitu.Bot.Forms.Options         ( Options
                                                 , DateType
                                                 )
 import qualified Aitu.Bot.Forms.Content.Content
                                                as Content
 
-type Title = Text
-
-data DatePicker = DatePicker {
+data CustomContainer = CustomContainer {
     contentId                 :: Content.ContentID
-    , title                   :: Title
-    , selectedDate            :: Maybe DateType
-    , validationRules         :: Maybe ValidationRules
+    , content                 :: [Content.Content]
     , options                 :: Maybe Options
 } deriving (Show)
 
-instance ToJSON DatePicker where
-    toJSON DatePicker {..} = object
+instance ToJSON CustomContainer where
+    toJSON CustomContainer {..} = object
         [ "id" .= contentId
-        , "type" .= Content.DatePicker
-        , "title" .= title
-        , "selected_date" .= selectedDate
-        , "validations_rules" .= validationRules
+        , "type" .= Content.CustomContainer
+        , "content" .= content
         , "options" .= options
         ]

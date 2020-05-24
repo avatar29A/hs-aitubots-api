@@ -7,19 +7,27 @@ module Aitu.Bot.Forms.Options
     , Alignment(..)
     , Currency(..)
     , InputType(..)
-    , OptionMediaType(..)
+    , MediaType(..)
     , Orientation(..)
     , TextSize(..)
     , TextStyle(..)
     , DateType(..)
+    , CatalogType(..)
+    , CatalogItemType(..)
+    , defaultOptions
+    , defaultHeaderOptions
     )
 where
 
-import           Data.Aeson              hiding ( Options )
-import           Data.Text
+import           Data.Aeson              hiding ( Options
+                                                , defaultOptions
+                                                )
+import           Data.Text               hiding ( take )
 import           Aitu.Bot.Forms.FlexOptions     ( FlexOptions )
 import           Aitu.Bot.Forms.Indent          ( Indent )
 
+--
+-- DateType
 data DateType = Date {
     day :: Int
     , month :: Int
@@ -30,6 +38,8 @@ instance ToJSON DateType where
     toJSON Date {..} =
         String $ pack $ show day ++ "-" ++ show month ++ "-" ++ show year
 
+--
+-- Alignment
 data Alignment = LEFT | RIGHT | CENTRAL
 
 instance Show Alignment where
@@ -40,11 +50,15 @@ instance Show Alignment where
 instance ToJSON Alignment where
     toJSON align = String $ (pack . show) align
 
+--
+-- Currency
 data Currency = KZT | USD | RUB | EUR | GBP deriving (Show)
 
 instance ToJSON Currency where
     toJSON currency = String $ (pack . show) currency
 
+--
+-- InputType
 data InputType = DOUBLE | TEXT | NUMBER | MONEY
 
 instance ToJSON InputType where
@@ -56,15 +70,22 @@ instance Show InputType where
     show NUMBER = "number"
     show MONEY  = "money"
 
-data OptionMediaType = PHOTO | VIDEO
+--
+-- MediaType
+data MediaType = PHOTO | VIDEO | IMAGE | AUDIO | DOCUMENT
 
-instance ToJSON OptionMediaType where
-    toJSON optionMediaType = String $ (pack . show) optionMediaType
+instance ToJSON MediaType where
+    toJSON mediaType = String $ (pack . show) mediaType
 
-instance Show OptionMediaType where
-    show PHOTO = "photo"
-    show VIDEO = "video"
+instance Show MediaType where
+    show PHOTO    = "photo"
+    show VIDEO    = "video"
+    show IMAGE    = "image"
+    show AUDIO    = "audio"
+    show DOCUMENT = "document"
 
+--
+-- Orientation Type
 data Orientation = VERTICAL | HORIZONTAL
 
 instance ToJSON Orientation where
@@ -74,22 +95,48 @@ instance Show Orientation where
     show VERTICAL   = "vertical"
     show HORIZONTAL = "horizontal"
 
+--
+-- TextSize Type
 data TextSize = H1 | H2 | H3 | H4 deriving (Show)
 
 instance ToJSON TextSize where
     toJSON textSize = String $ (pack . show) textSize
 
+--
+-- TextStyle Type
 data TextStyle = NORMAL | BOLD
-
-instance ToJSON TextStyle where
-    toJSON textStyle = String $ (pack . show) textStyle
 
 instance Show TextStyle where
     show NORMAL = "normal"
     show BOLD   = "bold"
 
+instance ToJSON TextStyle where
+    toJSON textStyle = String $ (pack . show) textStyle
+
+--
+-- SimpleCatalog types
+data CatalogType = CatalogGrid | CatalogList | CatalogHorizontalList deriving (Show)
+
+instance ToJSON CatalogType where
+    toJSON CatalogGrid           = String "grid"
+    toJSON CatalogList           = String "list"
+    toJSON CatalogHorizontalList = String "horizontal_list"
+
+data CatalogItemType = CatalogItemCard | CatalogItemInfo | CatalogItemBulleted | CatalogItemNumbered | CatalogItemNumberedBracket deriving (Show)
+
+instance ToJSON CatalogItemType where
+    toJSON CatalogItemCard            = String "item_card"
+    toJSON CatalogItemInfo            = String "item_info"
+    toJSON CatalogItemBulleted        = String "item_bulleted"
+    toJSON CatalogItemNumbered        = String "item_numbered"
+    toJSON CatalogItemNumberedBracket = String "item_numbered_bracket"
+
+--
+-- Option
+
 data Options = Options {
-    optionType                    :: Maybe Text
+    catalogType                   :: Maybe CatalogType
+    , catalogItemType             :: Maybe CatalogItemType
     , alignment                   :: Maybe Alignment
     , background                  :: Maybe Text
     , backgroundColor             :: Maybe Text
@@ -107,10 +154,9 @@ data Options = Options {
     , inputType                   :: Maybe InputType
     , itemLeftIconResource        :: Maybe Text
     , itemRightIconResource       :: Maybe Text
-    , itemType                    :: Maybe Text
     , maxCount                    :: Maybe Int
     , maxLength                   :: Maybe Int
-    , mediaType                   :: Maybe OptionMediaType
+    , mediaType                   :: Maybe MediaType
     , orientation                 :: Maybe Orientation
     , searchEnabled               :: Maybe Bool
     , showDivider                 :: Maybe Bool
@@ -129,10 +175,10 @@ data Options = Options {
 
 instance ToJSON Options where
     toJSON Options {..} = object
-        [ "type" .= optionType
+        [ "type" .= catalogType
+        , "item_type" .= catalogItemType
         , "fullscreen" .= fullscreen
         , "title" .= title
-        , "item_type" .= itemType
         , "columns_count" .= columnsCount
         , "search_enabled" .= searchEnabled
         , "closeable" .= closeable
@@ -141,8 +187,8 @@ instance ToJSON Options where
         , "text_size" .= textSize
         , "max_count" .= maxCount
         , "max_length" .= maxLength
-        , "textStyle" .= textStyle
-        , "textColor" .= textColor
+        , "text_style" .= textStyle
+        , "text_color" .= textColor
         , "width" .= width
         , "height" .= height
         , "show_divider" .= showDivider
@@ -164,3 +210,45 @@ instance ToJSON Options where
         , "min_date" .= minDate
         , "max_date" .= maxDate
         ]
+
+
+defaultOptions :: Options
+defaultOptions = Options Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+                         Nothing
+
+defaultHeaderOptions :: Options
+defaultHeaderOptions = defaultOptions { closeable = Just True }

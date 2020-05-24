@@ -11,14 +11,14 @@ import           Data.Aeson              hiding ( Options )
 import           Data.Text
 import           Aitu.Bot.Forms.Options         ( Options )
 
-import           Aitu.Bot.Forms.Content.Content ( ContentType )
+import qualified Aitu.Bot.Forms.Content.Content
+                                               as Content
 
 data Divider = Divider {
-    contentType            :: ContentType
-    , contentId            :: Text
+    contentId              :: Content.ContentID
     , options              :: Maybe Options
-}
+} deriving (Show)
 
 instance ToJSON Divider where
-    toJSON Divider {..} =
-        object ["id" .= contentId, "type" .= contentType, "options" .= options]
+    toJSON Divider {..} = object
+        ["id" .= contentId, "type" .= Content.Divider, "options" .= options]

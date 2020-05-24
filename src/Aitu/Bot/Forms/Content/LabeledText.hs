@@ -10,20 +10,23 @@ where
 import           Data.Aeson              hiding ( Options )
 import           Data.Text
 import           Aitu.Bot.Forms.Options         ( Options )
-import           Aitu.Bot.Forms.Content.Content ( ContentType )
+import qualified Aitu.Bot.Forms.Content.Content
+                                               as Content
+
+type Label = Text
+type Title = Text
 
 data LabeledText = LabeledText {
-    contentType          :: ContentType
-    , contentId          :: Text
-    , label              :: Text
-    , title              :: Text
-    , options            :: Maybe Text
-}
+    contentId          :: Content.ContentID
+    , label              :: Label
+    , title              :: Title
+    , options            :: Maybe Options
+} deriving (Show)
 
 instance ToJSON LabeledText where
     toJSON LabeledText {..} = object
-        [ "type" .= contentType
-        , "id" .= contentId
+        [ "id" .= contentId
+        , "type" .= Content.LabeledText
         , "label" .= label
         , "title" .= title
         , "options" .= options

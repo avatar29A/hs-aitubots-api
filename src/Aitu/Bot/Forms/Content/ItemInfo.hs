@@ -13,23 +13,26 @@ import           Aitu.Bot.Forms.Options         ( Options )
 import           Aitu.Bot.Forms.Content.FileMetadata
                                                 ( FileMetadata )
 
-import           Aitu.Bot.Forms.Content.Content ( ContentType )
+import qualified Aitu.Bot.Forms.Content.Content
+                                               as Content
+
+type Title = Text
+type Subtitle = Text
 
 data ItemInfo = ItemInfo {
-    contentId                   :: Text
-    , contentType               :: ContentType
-    , title                     :: Maybe Text
-    , subtitle                  :: Maybe Text
-    , filemMetadata             :: Maybe FileMetadata
+    contentId                   :: Content.ContentID
+    , title                     :: Maybe Title
+    , subtitle                  :: Maybe Subtitle
+    , fileMetadata             :: Maybe FileMetadata
     , options                   :: Maybe Options
-}
+} deriving (Show)
 
 instance ToJSON ItemInfo where
     toJSON ItemInfo {..} = object
         [ "id" .= contentId
-        , "type" .= contentType
+        , "type" .= Content.ItemInfo
         , "title" .= title
         , "subtitle" .= subtitle
-        , "file_metadata" .= filemMetadata
+        , "file_metadata" .= fileMetadata
         , "options" .= options
         ]

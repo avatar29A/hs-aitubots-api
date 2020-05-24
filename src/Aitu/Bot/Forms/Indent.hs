@@ -2,16 +2,24 @@
 {-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Forms.Indent where
+module Aitu.Bot.Forms.Indent
+    ( Indent(..)
+    )
+where
 
 import           Data.Aeson
 import           Data.Text
 
+type Left = Int
+type Top = Int
+type Right = Int
+type Bottom = Int
+
 data Indent = Indent {
-    left      :: Maybe Int
-    , top     :: Maybe Int
-    , right   :: Maybe Int
-    , bottom  :: Maybe Int
+    left      :: Int
+    , top     :: Int
+    , right   :: Int
+    , bottom  :: Int
 } deriving (Show)
 
 instance ToJSON Indent where

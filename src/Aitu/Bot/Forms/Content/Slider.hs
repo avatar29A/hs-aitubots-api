@@ -4,6 +4,7 @@
 
 module Aitu.Bot.Forms.Content.Slider
     ( Slider(..)
+    , SliderItem(..)
     )
 where
 
@@ -13,20 +14,20 @@ import           Aitu.Bot.Forms.Options         ( Options )
 import           Aitu.Bot.Forms.Content.FileMetadata
                                                 ( FileMetadata )
 
-import           Aitu.Bot.Forms.Content.Content ( ContentType )
+import qualified Aitu.Bot.Forms.Content.Content
+                                               as Content
 
 data Slider = Slider {
-    contentId             :: Text
-    , contentType         :: ContentType
+    contentId             :: Content.ContentID
     , items               :: [SliderItem]
 } deriving (Show)
 
 instance ToJSON Slider where
     toJSON Slider {..} =
-        object ["id" .= contentId, "type" .= contentType, "items" .= items]
+        object ["id" .= contentId, "type" .= Content.Slider, "items" .= items]
 
 data SliderItem = SliderItem {
-    contentId :: Text
+    contentId :: Content.ContentID
     , fileMetadata :: FileMetadata
 } deriving (Show)
 

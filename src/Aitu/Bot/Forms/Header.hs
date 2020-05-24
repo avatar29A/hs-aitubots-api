@@ -4,6 +4,7 @@
 
 module Aitu.Bot.Forms.Header
     ( Header(..)
+    , HeaderType(..)
     )
 where
 
@@ -25,8 +26,8 @@ instance ToJSON HeaderType where
 data Header = Header {
     headerType          :: HeaderType
     , title             :: Text
-    , options           :: Maybe Options
     , formAction        :: Maybe FormAction
+    , options           :: Options
 } deriving (Show)
 
 instance ToJSON Header where

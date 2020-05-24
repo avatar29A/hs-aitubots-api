@@ -9,14 +9,16 @@ where
 
 import           Data.Aeson              hiding ( Options )
 import           Data.Text
-import           Aitu.Bot.Forms.Content.Content ( ContentType )
+import qualified Aitu.Bot.Forms.Content.Content
+                                               as Content
+
+type UserId = Text
 
 data UserInfo = UserInfo {
-    contentType         :: ContentType
-    , contentId         :: Text
-    , userId            :: Text
-}
+    contentId           :: Content.ContentID
+    , userId            :: UserId
+} deriving (Show)
 
 instance ToJSON UserInfo where
-    toJSON UserInfo {..} =
-        object ["id" .= contentId, "type" .= contentType, "user_id" .= userId]
+    toJSON UserInfo {..} = object
+        ["id" .= contentId, "type" .= Content.UserInfo, "user_id" .= userId]

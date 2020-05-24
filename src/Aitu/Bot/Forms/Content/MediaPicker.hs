@@ -11,20 +11,22 @@ import           Data.Aeson              hiding ( Options )
 import           Data.Text
 import           Aitu.Bot.Forms.Options         ( Options )
 import           Aitu.Bot.Forms.ValidationRules ( ValidationRules )
-import           Aitu.Bot.Forms.Content.Content ( ContentType )
+import qualified Aitu.Bot.Forms.Content.Content
+                                               as Content
+
+type Title = Text
 
 data MediaPicker = MediaPicker {
-    contentType                  :: ContentType
-    , contentId                  :: Text
-    , title                      :: Text
-    , options                    :: Maybe Options
+    contentId                    :: Content.ContentID
+    , title                      :: Title
     , validationRules            :: Maybe ValidationRules
-}
+    , options                    :: Maybe Options
+} deriving (Show)
 
 instance ToJSON MediaPicker where
     toJSON MediaPicker {..} = object
-        [ "type" .= contentType
-        , "id" .= contentId
+        [ "id" .= contentId
+        , "type" .= Content.MediaPicker
         , "title" .= title
         , "options" .= options
         , "validations_rules" .= validationRules

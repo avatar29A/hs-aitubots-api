@@ -11,11 +11,11 @@ import           Data.Aeson
 import           Data.Text
 
 import           Aitu.Bot.Forms.FormAction      ( FormAction )
-import           Aitu.Bot.Forms.Content.Content ( ContentType )
+import qualified Aitu.Bot.Forms.Content.Content
+                                               as Content
 
 data BottomBar = BottomBar {
-    contentId           :: Text
-    , contentType       :: ContentType
+    contentId           :: Content.ContentID
     , title             :: Text
     , formAction        :: FormAction
 } deriving (Show)
@@ -23,7 +23,7 @@ data BottomBar = BottomBar {
 instance ToJSON BottomBar where
     toJSON BottomBar {..} = object
         [ "id" .= contentId
-        , "type" .= contentType
+        , "type" .= Content.BottomBar
         , "title" .= title
         , "form_action" .= formAction
         ]

@@ -2,13 +2,15 @@
 {-# LANGUAGE RecordWildCards #-}
 {-# LANGUAGE OverloadedStrings #-}
 
-module Aitu.Bot.Forms.Content.TextArea
-    ( TextArea(..)
+module Aitu.Bot.Forms.Content.TextWidget
+    ( TextWidget(..)
     )
 where
 
 import           Data.Aeson              hiding ( Options )
 import           Data.Text
+
+import           Aitu.Bot.Forms.FormAction      ( FormAction )
 import           Aitu.Bot.Forms.Options         ( Options )
 import           Aitu.Bot.Forms.ValidationRules ( ValidationRules )
 import qualified Aitu.Bot.Forms.Content.Content
@@ -17,22 +19,18 @@ import qualified Aitu.Bot.Forms.Content.Content
 type Title = Text
 type Placeholder = Text
 
-data TextArea = TextArea {
+data TextWidget = TextWidget {
     contentId               :: Content.ContentID
     , title                 :: Title
-    , text                  :: Text
-    , placeholder           :: Maybe Placeholder
-    , validationRules       :: Maybe ValidationRules
+    , formAction            :: Maybe FormAction
     , options               :: Maybe Options
 } deriving (Show)
 
-instance ToJSON TextArea where
-    toJSON TextArea {..} = object
+instance ToJSON TextWidget where
+    toJSON TextWidget {..} = object
         [ "id" .= contentId
-        , "type" .= Content.TextArea
+        , "type" .= Content.Text
         , "title" .= title
-        , "text" .= text
-        , "placeholder" .= placeholder
+        , "form_action" .= formAction
         , "options" .= options
-        , "validations_rules" .= validationRules
         ]

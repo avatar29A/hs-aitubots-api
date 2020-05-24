@@ -10,16 +10,21 @@ where
 import           Data.Aeson
 import           Data.Text
 
+import           Aitu.Bot.Forms.Options         ( MediaType )
+
+type FileId = Text
+type FileName = Text
+
 data FileMetadata = FileMetadata {
-    fileType            :: Text
-    , fileId            :: Text
-    , fileName          :: Text
+    fileId                  :: FileId
+    , fileType              :: MediaType
+    , fileName              :: FileName
 } deriving (Show)
 
 instance ToJSON FileMetadata where
     toJSON FileMetadata {..} =
         object
-            [ "file_type" .= fileType
-            , "file_id" .= fileId
-            , "file_name" .= fileName
+            [ "file_id" .= fileId
+            , "file_type" .= fileType
+            , "filename" .= fileName
             ]

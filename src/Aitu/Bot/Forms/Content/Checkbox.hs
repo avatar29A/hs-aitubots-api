@@ -12,23 +12,23 @@ import           Data.Text
 
 import           Aitu.Bot.Forms.Options         ( Options )
 import           Aitu.Bot.Forms.ValidationRules ( ValidationRules )
-import           Aitu.Bot.Forms.Content.Content ( ContentType )
+import qualified Aitu.Bot.Forms.Content.Content
+                                               as Content
 
 data Checkbox = Checkbox {
-    contentId                       :: Text
-    , contentType                   :: ContentType
+    contentId                       :: Content.ContentID
     , title                         :: Text
     , defaultState                  :: Bool
+    , validationRules               :: Maybe ValidationRules
     , options                       :: Maybe Options
-    , validationsRules              :: Maybe ValidationRules
 } deriving (Show)
 
 instance ToJSON Checkbox where
     toJSON Checkbox {..} = object
         [ "id" .= contentId
-        , "type" .= contentType
+        , "type" .= Content.Checkbox
         , "title" .= title
         , "default_state" .= defaultState
         , "options" .= options
-        , "validations_rules" .= validationsRules
+        , "validations_rules" .= validationRules
         ]

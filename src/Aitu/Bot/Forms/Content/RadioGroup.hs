@@ -4,6 +4,7 @@
 
 module Aitu.Bot.Forms.Content.RadioGroup
     ( RadioGroup(..)
+    , RadioItem(..)
     )
 where
 
@@ -11,32 +12,34 @@ import           Data.Aeson              hiding ( Options )
 import           Data.Text
 import           Aitu.Bot.Forms.Options         ( Options )
 import           Aitu.Bot.Forms.ValidationRules ( ValidationRules )
-import           Aitu.Bot.Forms.Content.Content ( ContentType )
+import qualified Aitu.Bot.Forms.Content.Content
+                                               as Content
+
+type Title = Text
 
 data RadioGroup = RadioGroup {
-    contentId             :: Text
-    , contentType         :: ContentType
-    , title               :: Maybe Text
-    , items               :: Maybe [RadioItem]
-    , validationRules     :: Maybe ValidationRules
+    contentId             :: Content.ContentID
+    , title               :: Title
+    , items               :: [RadioItem]
     , defaultValue        :: Maybe RadioItem
-    , options              :: Maybe Options
-}
+    , validationRules     :: Maybe ValidationRules
+    , options             :: Maybe Options
+} deriving (Show)
 
 instance ToJSON RadioGroup where
     toJSON RadioGroup {..} = object
         [ "id" .= contentId
-        , "type" .= contentType
+        , "type" .= Content.RadioGroup
         , "title" .= title
         , "items" .= items
-        , "validations_rules" .= validationRules
         , "default_value" .= defaultValue
+        , "validations_rules" .= validationRules
         , "options" .= options
         ]
 
 data RadioItem = RadioItem {
-    contentId :: Text
-    , title :: Maybe Text
+    contentId   :: Content.ContentID
+    , title     :: Title
 } deriving (Show)
 
 instance ToJSON RadioItem where

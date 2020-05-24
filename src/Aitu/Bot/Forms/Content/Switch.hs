@@ -10,20 +10,20 @@ where
 import           Data.Aeson              hiding ( Options )
 import           Data.Text
 import           Aitu.Bot.Forms.Options         ( Options )
-import           Aitu.Bot.Forms.Content.Content ( ContentType )
+import qualified Aitu.Bot.Forms.Content.Content
+                                               as Content
 
 data Switch = Switch {
-    contentId                     :: Text
-    , contentType                 :: Text
-    , title                       :: Maybe Text
+    contentId                     :: Content.ContentID
+    , title                       :: Text
     , defaultState                :: Bool
     , options                     :: Maybe Options
-}
+} deriving (Show)
 
 instance ToJSON Switch where
     toJSON Switch {..} = object
         [ "id" .= contentId
-        , "type" .= contentType
+        , "type" .= Content.Switch
         , "title" .= title
         , "default_state" .= defaultState
         , "options" .= options

@@ -1,37 +1,42 @@
 
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DuplicateRecordFields #-}
+{-# LANGUAGE RecordWildCards #-}
 
-module Aitu.Bot.Commands.SendContainerMessage (SendContainerMessage (..)) where
+module Aitu.Bot.Commands.SendContainerMessage
+    ( SendContainerMessage(..)
+    )
+where
 
-import Data.Aeson
-import Data.Text
-import Data.Maybe
+import           Data.Aeson
+import           Data.Aeson.Text
 
-import Data.UUID.Types
+import           Data.Text
+import           Data.Maybe
 
-import Aitu.Bot.Types.Peer (Peer)
-import Aitu.Bot.Types.UIState (UIState)
-import Aitu.Bot.Types.InputMedia (InputMedia)
-import Aitu.Bot.Types.InlineCommand (InlineCommand, RowInlineCommands)
+import           Data.UUID.Types
+
+import           Aitu.Bot.Types.Peer            ( Peer )
+import           Aitu.Bot.Types.UIState         ( UIState )
+import           Aitu.Bot.Types.InputMedia      ( InputMedia )
+import           Aitu.Bot.Types.InlineCommand   ( InlineCommand
+                                                , RowInlineCommands
+                                                )
+import qualified Aitu.Bot.Forms.Content.Content
+                                               as C
+                                                ( Content(..) )
 
 -- doc: https://btsdigital.github.io/bot-api-contract/SendContainerMessage.html
 data SendContainerMessage = SendContainerMessage {
-    sendContainerMessageType              :: Text
-    , sendContainerMessageLocalId         :: Maybe UUID
-    , sendContainerMessageRecipient       :: Peer
-    , sendContainerMessageContent         :: Text
+    localId         :: Maybe Text
+    , recipient       :: Peer
+    , content         :: [C.Content]
 } deriving (Show)
 
 instance ToJSON SendContainerMessage where
-    toJSON command = object [
-        "type"                  .= sendContainerMessageType command
-        , "localId"             .= sendContainerMessageLocalId command
-        , "recipient"           .= sendContainerMessageRecipient command
-        , "content"             .= sendContainerMessageContent command]
-
-instance FromJSON SendContainerMessage where
-    parseJSON (Object o) =
-        SendContainerMessage <$> o .: "type"
-                            <*> o   .:? "localId"
-                            <*> o   .: "recipient"
-                            <*> o   .: "content"
+    toJSON SendContainerMessage {..} = object
+        [ "type" .= ("SendContainerMessage" :: Text)
+        , "localId" .= localId
+        , "recipient" .= recipient
+        , "content" .= encodeToLazyText content
+        ]
