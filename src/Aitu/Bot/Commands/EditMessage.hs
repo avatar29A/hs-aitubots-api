@@ -1,3 +1,5 @@
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE OverloadedStrings #-}
 
 module Aitu.Bot.Commands.EditMessage
@@ -19,22 +21,20 @@ import           Aitu.Bot.Types.InlineCommand   ( InlineCommand
 -- EditMessageCommand sends message about a message editing
 -- docs: https://btsdigital.github.io/bot-api-contract/EditMessage.html
 data EditMessage = EditMessage {
-    editMessageType                             :: Text
-    , editMessageId                             :: Text
-    , editMessageRecipient                      :: Peer
-    , editMessageContent                        :: Text
-    , editMessageInlineCommandRows              :: Maybe [RowInlineCommands]
-    , editMessageUIState                        :: Maybe UIState
-    , editMessageMediaList                      :: Maybe [InputMedia]} deriving (Show)
+    messageId                        :: Text
+    , recipient                      :: Peer
+    , content                        :: Text
+    , inlineCommandRows              :: Maybe [RowInlineCommands]
+    , uiState                        :: Maybe UIState
+    , mediaList                      :: Maybe [InputMedia]} deriving (Show)
 
 instance ToJSON EditMessage where
-    toJSON command = object
-        [ "type" .= editMessageType command
-        , "messageId" .= editMessageId command
-        , "recipient" .= editMessageRecipient command
-        , "content" .= editMessageContent command
-        , "inlineCommandRows"
-            .= maybeToList (editMessageInlineCommandRows command)
-        , "uiState" .= editMessageUIState command
-        , "mediaList" .= maybeToList (editMessageMediaList command)
+    toJSON EditMessage {..} = object
+        [ "type" .= ("EditMessage" :: Text)
+        , "messageId" .= messageId
+        , "recipient" .= recipient
+        , "content" .= content
+        , "inlineCommandRows" .= maybeToList inlineCommandRows
+        , "uiState" .= uiState
+        , "mediaList" .= maybeToList mediaList
         ]

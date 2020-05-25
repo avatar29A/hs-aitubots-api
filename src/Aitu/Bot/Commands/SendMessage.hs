@@ -1,3 +1,5 @@
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE OverloadedStrings #-}
 
 module Aitu.Bot.Commands.SendMessage
@@ -24,36 +26,34 @@ import           Aitu.Bot.Types.InlineCommand   ( InlineCommand
 -- SendMessageCommand sends messages from service (bot) to a dialog with a user, group dialog or a channel.
 -- doc: https://btsdigital.github.io/bot-api-contract/SendMessage.html
 data SendMessage = SendMessage {
-    smType                          :: Text
-    , smLocalId                     :: Maybe Text
-    , smContent                     :: Text
-    , smRecipient                   :: Peer
-    , smReplyToMessageId            :: Maybe UUID
-    , smInlineCommandRows           :: Maybe [RowInlineCommands]
-    , smUIState                     :: Maybe UIState
-    , smMediaList                   :: Maybe [InputMedia]
+    localId                         :: Maybe Text
+    , content                     :: Text
+    , recipient                   :: Peer
+    , replyToMessageId            :: Maybe UUID
+    , inlineCommandRows           :: Maybe [RowInlineCommands]
+    , uiState                     :: Maybe UIState
+    , mediaList                   :: Maybe [InputMedia]
 } deriving (Show)
 
 mkSendMessageWithDefaults :: Text -> Peer -> SendMessage
 mkSendMessageWithDefaults content peer = SendMessage
-    { smType              = "SendMessage"
-    , smLocalId           = Nothing
-    , smContent           = content
-    , smRecipient         = peer
-    , smReplyToMessageId  = Nothing
-    , smInlineCommandRows = Nothing
-    , smUIState           = Nothing
-    , smMediaList         = Nothing
+    { localId           = Nothing
+    , content           = content
+    , recipient         = peer
+    , replyToMessageId  = Nothing
+    , inlineCommandRows = Nothing
+    , uiState           = Nothing
+    , mediaList         = Nothing
     }
 
 instance ToJSON SendMessage where
-    toJSON command = object
-        [ "type" .= smType command
-        , "localId" .= smLocalId command
-        , "content" .= smContent command
-        , "recipient" .= smRecipient command
-        , "replyToMessageId" .= smReplyToMessageId command
-        , "inlineCommandRows" .= maybeToList (smInlineCommandRows command)
-        , "uiState" .= smUIState command
-        , "mediaList" .= maybeToList (smMediaList command)
+    toJSON SendMessage {..} = object
+        [ "type" .= ("SendMessage" :: Text)
+        , "localId" .= localId
+        , "content" .= content
+        , "recipient" .= recipient
+        , "replyToMessageId" .= replyToMessageId
+        , "inlineCommandRows" .= maybeToList inlineCommandRows
+        , "uiState" .= uiState
+        , "mediaList" .= maybeToList mediaList
         ]
