@@ -4,7 +4,9 @@
 module FormCustomContainer where
 
 import           Aitu.Bot
-import           Aitu.Bot.Types
+import           Aitu.Bot.Types          hiding ( Image(..)
+                                                , InputMediaType(..)
+                                                )
 import           Aitu.Bot.Forms
 import           Aitu.Bot.Commands
 import           Aitu.Bot.Widgets
@@ -94,9 +96,38 @@ open peer = do
                 }
             }
 
+        image1 = Image
+            { contentId    = "image1"
+            , options      = Just defaultOptions
+                { width       = Just 37
+                , height      = Just 6
+                , flexOptions = Just defaultFlexOptions
+                                    { alignSelf = Just ALIGN_CENTER
+                                    }
+                }
+            , fileMetadata = FileMetadata
+                                 "435fa9e6-9e74-11ea-bfb9-82ed4a7ce3ac"
+                                 IMAGE
+                                 "cat.jpg"
+            , formAction   = Nothing
+            }
+
+        imageContainer = CustomContainer
+            { contentId = "imageContainer"
+            , content   = [C.Content image1]
+            , options   = Just defaultOptions
+                { width       = Just 62
+                , flexOptions = Just defaultFlexOptions
+                                    { flexDirection = Just COLUMN
+                                    , alignItems    = Just ALIGN_CENTER
+                                    }
+                }
+            }
+
         parentCustomContainer = CustomContainer
             { contentId = "parentContainer"
-            , content   = [ C.Content titleText
+            , content   = [ C.Content imageContainer
+                          , C.Content titleText
                           , C.Content subtitleText
                           , C.Content divider
                           , C.Content contactTitleText
@@ -125,4 +156,4 @@ open peer = do
             }
 
 
-    sendCustomContainer peer [mainCustomContainer]
+    sendCustomContainer peer [mainCustomContainer, mainCustomContainer]

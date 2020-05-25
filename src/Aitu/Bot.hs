@@ -15,6 +15,7 @@ module Aitu.Bot
     , setWebhook
     , getWebhook
     , deleteWebhook
+    , uploadFile
     )
 where
 
@@ -25,6 +26,7 @@ import           Control.Exception
 
 import           Network.HTTP.Client
 import           Network.HTTP.Types.Status      ( statusCode )
+import           Network.HTTP.Client.MultipartFormData
 
 import           Data.Aeson
 import           Data.UUID.Types               as UUID
@@ -51,6 +53,7 @@ type Url = String
 type Token = String
 type Method = BS.ByteString
 type JSON = BC.ByteString
+type FileName = T.Text
 
 type AituBotClient a = ReaderT AituBotConfig IO (Either ClientError a)
 
@@ -149,6 +152,38 @@ get' url = do
 -- invoke does http request to Aitu Bot Platform and returns raw data or Error.
 post :: Url -> BC.ByteString -> AituBotClient BC.ByteString
 post = invoke "POST"
+
+uploadFile :: FileName -> FilePath -> AituBotClient UploadFiles
+uploadFile filename filepath = do
+    response <- uploadFiles filename filepath
+    pure (response >>= mkFromJSON)
+
+-- uploadFile uploads file to Aitu server
+uploadFiles :: FileName -> FilePath -> AituBotClient JSON
+uploadFiles filename filepath = do
+    t       <- asks token
+    baseUrl <- asks apiUrl
+    m       <- asks manager
+    let url = baseUrl <> "upload"
+
+    initReq <- liftIO $ parseRequest url
+    let request = initReq
+            { method         = "POST"
+            , requestHeaders = [ ("x-bot-token" , (encodeUtf8 . T.pack) t)
+                               , ("content-type", "application/octet-stream")
+                               ]
+            }
+
+    response <-
+        liftIO
+        $   flip httpLbs m
+        =<< formDataBody [partFileSource filename filepath] request
+
+    let httpCode = statusCode $ responseStatus response
+        body     = responseBody response
+
+    pure $ if httpCode /= 200 then Left (httpCode, body) else Right body
+
 
 -- invoke does http request to Aitu Bot Platform and returns raw data or Error.
 invoke :: Method -> Url -> JSON -> AituBotClient JSON

@@ -22,9 +22,11 @@ open peer = do
                         , formAction = Nothing
                         }
 
-        fileMetadata = FileMetadata "image_id" IMAGE "file_name.jpg"
+        fileMetadata = FileMetadata "435fa9e6-9e74-11ea-bfb9-82ed4a7ce3ac"
+                                    IMAGE
+                                    "cat.jpg"
 
-        image1       = Image
+        image1 = Image
             "image_id"
             fileMetadata
             (Just defaultOptions { width = Just 100, height = Just 100 })

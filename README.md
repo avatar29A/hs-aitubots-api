@@ -39,6 +39,33 @@ main = do
         Right me -> print me
 ```
 
+### Upload File
+
+```haskell
+{-# LANGUAGE OverloadedStrings #-}
+
+module Main where
+
+import Network.HTTP.Client
+import Network.HTTP.Client.TLS (tlsManagerSettings)
+
+import qualified Data.ByteString.Lazy.Char8 as BC
+
+import Aitu.Bot
+
+main :: IO ()
+main = do
+    let token = "<YOUR_BOT_TOKEN>"
+
+    manager <- newManager tlsManagerSettings
+    response <- runAituBotClient token manager $ do 
+        uploadFile "cat.png" "images/cat.png"
+
+    case response of
+        Left (code, errMsg) -> BC.putStrLn errMsg
+        Right me -> print me
+```
+
 ### UI
 
 Simple Form with Button, that open url by click
@@ -148,7 +175,7 @@ where
 - [x] [setWebhook](https://btsdigital.github.io/bot-api-contract/setwebhook.html)
 - [x] [deleteWebhook](https://btsdigital.github.io/bot-api-contract/deletewebhook.html)
 - [x] [getWebhookInfo](https://btsdigital.github.io/bot-api-contract/getwebhookinfo.html)
-- [ ] uploadMedia
+- [x] uploadMedia
 - [ ] downloadMedia 
 
 ## Updates
@@ -203,3 +230,4 @@ where
     - [x] [TextArea](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/TextArea.hs)
     - [x] [UserInfo](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/UserInfo.hs)
 - [ ] Typed Resource Library
+- [ ] Applicative Form Builder

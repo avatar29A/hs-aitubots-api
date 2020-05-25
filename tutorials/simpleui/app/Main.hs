@@ -33,12 +33,12 @@ import qualified FormCustomContainer
 
 main :: IO ()
 main = do
-    let token  = "<BOT TOKEN>"
-        peerId = fromJust (UUID.fromString "<PEER ID>")
+    let token  = "API_BOT_TOKEN"
+        peerId = fromJust (UUID.fromString "PEER_ID")
         peer   = mkUserWithDefaults peerId
 
     manager  <- newManager tlsManagerSettings
-    response <- runAituBotClient token manager $ FormCustomContainer.open peer
+    response <- runAituBotClient token manager $ FormImage.open peer
 
     case response of
         Left  (code, errMsg) -> BC.putStrLn errMsg
