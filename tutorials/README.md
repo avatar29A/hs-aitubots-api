@@ -1,5 +1,22 @@
 # Tutorials
 
 - [x] [echobot](https://github.com/avatar29A/hs-aitubots-api/tree/master/tutorials/echobot) - simple bot that replay your messages
+- [x] [simpleui](#) - how building bots with UI
+    - [x] [Button](https://github.com/avatar29A/hs-aitubots-api/blob/master/tutorials/simpleui/app/FormButton.hs)
+    - [x] [ButtonBar](https://github.com/avatar29A/hs-aitubots-api/blob/master/tutorials/simpleui/app/FormButtonBar.hs)
+    - [x] [Checkbox](https://github.com/avatar29A/hs-aitubots-api/blob/master/tutorials/simpleui/app/FormCheckbox.hs)
+    - [x] [CustomContainer](https://github.com/avatar29A/hs-aitubots-api/blob/master/tutorials/simpleui/app/FormCustomContainer.hs)
+    - [x] [DatePicker](https://github.com/avatar29A/hs-aitubots-api/blob/master/tutorials/simpleui/app/FormDatePicker.hs)
+    - [x] [Image](https://github.com/avatar29A/hs-aitubots-api/blob/master/tutorials/simpleui/app/FormImage.hs)
+    - [x] [Input](https://github.com/avatar29A/hs-aitubots-api/blob/master/tutorials/simpleui/app/FormInput.hs)
+    - [x] [ItemInfo](https://github.com/avatar29A/hs-aitubots-api/blob/master/tutorials/simpleui/app/FormItemInfo.hs)
+    - [x] [LabeledText](https://github.com/avatar29A/hs-aitubots-api/blob/master/tutorials/simpleui/app/FormLabeledText.hs)
+    - [x] [MediaPicker](https://github.com/avatar29A/hs-aitubots-api/blob/master/tutorials/simpleui/app/FormMediaPicker.hs)
+    - [x] [Radiogroup](https://github.com/avatar29A/hs-aitubots-api/blob/master/tutorials/simpleui/app/FormRadiogroup.hs)
+    - [x] [SimpleCatalog](https://github.com/avatar29A/hs-aitubots-api/blob/master/tutorials/simpleui/app/FormSimpleCatalog.hs)
+    - [x] [Submit](https://github.com/avatar29A/hs-aitubots-api/blob/master/tutorials/simpleui/app/FormSubmit.hs)
+    - [x] [Switch](https://github.com/avatar29A/hs-aitubots-api/blob/master/tutorials/simpleui/app/FormSwitch.hs)
+    - [x] [Text](https://github.com/avatar29A/hs-aitubots-api/blob/master/tutorials/simpleui/app/FormText.hs)
+    - [x] [TextArea](https://github.com/avatar29A/hs-aitubots-api/blob/master/tutorials/simpleui/app/FormTextArea.hs)
+    - [x] [UserInfo](https://github.com/avatar29A/hs-aitubots-api/blob/master/tutorials/simpleui/app/FormUserInfo.hs)
 - [ ] [eventbot](#) - how work with events
-- [ ] [simpleui](#) - how building bots with UI

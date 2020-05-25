@@ -4,7 +4,6 @@
 module Main where
 
 import qualified Data.UUID                     as UUID
-import           Data.Aeson              hiding ( defaultOptions )
 import           Data.Maybe
 import           Aitu.Bot
 import           Aitu.Bot.Types
@@ -34,10 +33,9 @@ import qualified FormCustomContainer
 
 main :: IO ()
 main = do
-    let token = "567046be-9bee-4197-96ca-b41f9281c706"
-        peerId =
-            fromJust (UUID.fromString "fe909ae9-b048-11e8-81c3-0242c0a88006")
-        peer = mkUserWithDefaults peerId
+    let token  = "<BOT TOKEN>"
+        peerId = fromJust (UUID.fromString "<PEER ID>")
+        peer   = mkUserWithDefaults peerId
 
     manager  <- newManager tlsManagerSettings
     response <- runAituBotClient token manager $ FormCustomContainer.open peer
