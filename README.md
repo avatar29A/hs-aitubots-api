@@ -174,32 +174,32 @@ where
 
 ## Forms
 
-- [x] Form
-- [x] Header
-- [x] Options
-- [x] FlexOptions
-- [x] FormAction
-- [x] Indent
-- [x] ValidationRule
+- [x] [Form](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Form.hs)
+- [x] [Header](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Header.hs)
+- [x] [Options](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Options.hs)
+- [x] [FlexOptions](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/FlexOptions.hs)
+- [x] [FormAction](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/FormAction.hs)
+- [x] [Indent](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Indent.hs)
+- [x] [ValidationRule](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/ValidationRules.hs)
 - [x] Content
-    - [x] Content
-    - [x] BottomBar
-    - [x] Button
-    - [x] Checkbox
-    - [x] DatePicker
-    - [x] Divider
-    - [x] FileMetadata
-    - [x] Image
-    - [x] Input
-    - [x] ItemInfo
-    - [x] LabeledText
-    - [x] MediaPicker
-    - [x] RadioGroup
-    - [x] SimpleCatalog
-    - [x] Slider
-    - [x] Submit
-    - [x] Switch
-    - [x] Text
-    - [x] TextArea
-    - [x] UserInfo
+    - [x] [Content](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/Content.hs)
+    - [x] [BottomBar](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/BottomBar.hs)
+    - [x] [Button](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/Button.hs)
+    - [x] [Checkbox](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/Checkbox.hs)
+    - [x] [DatePicker](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/DatePicker.hs)
+    - [x] [Divider](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/Divider.hs)
+    - [x] [FileMetadata](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/FileMetadata.hs)
+    - [x] [Image](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/Image.hs)
+    - [x] [Input](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/Input.hs)
+    - [x] [ItemInfo](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/ItemInfo.hs)
+    - [x] [LabeledText](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/LabeledText.hs)
+    - [x] [MediaPicker](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/MediaPicker.hs)
+    - [x] [RadioGroup](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/RadioGroup.hs)
+    - [x] [SimpleCatalog](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/SimpleCatalog.hs)
+    - [x] [Slider](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/Slider.hs)
+    - [x] [Submit](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/Submit.hs)
+    - [x] [Switch](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/Switch.hs)
+    - [x] [Text](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/TextWidget.hs)
+    - [x] [TextArea](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/TextArea.hs)
+    - [x] [UserInfo](https://github.com/avatar29A/hs-aitubots-api/blob/master/src/Aitu/Bot/Forms/Content/UserInfo.hs)
 - [ ] Typed Resource Library
